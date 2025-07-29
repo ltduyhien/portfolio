@@ -64,7 +64,7 @@ const App = () => {
 
   return (
     <div className="min-h-screen text-black dark:text-white transition-colors duration-300 ease-in-out">
-      <Router>
+      <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <MobileHeader
           menuOpen={menuOpen}
           toggleMenu={() => setMenuOpen(!menuOpen)}
