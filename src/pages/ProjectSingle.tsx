@@ -158,11 +158,11 @@ const markdownComponents = {
   img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
     const { src, alt, ...rest } = props;
     const { slug } = useParams();
-    const getImage = (img: string) => `/src/projects/${slug}/${img}`;
+    const imageSrc = slug && src ? getImageUrl(slug, src) : src;
 
     return (
       <img
-        src={src ? getImage(src) : ''}
+        src={imageSrc}
         alt={alt || ''}
         className="w-full [border-radius:6px_/_6px] object-cover mb-4 border-2 border-zinc-200 dark:border-zinc-700"
         {...rest}
@@ -207,6 +207,43 @@ const markdownComponents = {
     }
     return <div {...props} />;
   },
+};
+
+// Image component that handles dynamic imports
+const DynamicImage: React.FC<{ 
+  src: string; 
+  alt: string; 
+  className?: string; 
+  style?: React.CSSProperties;
+  isProjectThumbnail?: boolean;
+  onOpenLightbox?: () => void; 
+  onCloseLightbox?: () => void; 
+  caption?: string 
+}> = ({ src, alt, className, style, isProjectThumbnail, onOpenLightbox, onCloseLightbox, caption }) => {
+  const { slug } = useParams();
+  const imageSrc = slug ? getImageUrl(slug, src) : src;
+
+  return (
+    <ClickableImage
+      src={imageSrc}
+      alt={alt}
+      className={className}
+      style={style}
+      isProjectThumbnail={isProjectThumbnail}
+      onOpenLightbox={onOpenLightbox}
+      onCloseLightbox={onCloseLightbox}
+      caption={caption}
+    />
+  );
+};
+
+// Dynamic image imports using Vite glob
+const projectImages = import.meta.glob('../projects/*/*.{png,jpg,jpeg}', { eager: true });
+
+// Helper function to get image URL
+const getImageUrl = (slug: string, imageName: string): string => {
+  const key = `../projects/${slug}/${imageName}`;
+  return projectImages[key] ? (projectImages[key] as { default: string }).default : `/src/projects/${slug}/${imageName}`;
 };
 
 const ProjectSingle = () => {
@@ -297,8 +334,6 @@ const ProjectSingle = () => {
     );
   }
 
-  const getImage = (img: string) => `/src/projects/${slug}/${img}`;
-
   // Find current, previous, and next project
   const idx = PROJECTS_ORDER.findIndex((p) => p.slug === slug);
   const prev = idx > 0 ? PROJECTS_ORDER[idx - 1] : null;
@@ -348,8 +383,8 @@ const ProjectSingle = () => {
             <div className="flex flex-col gap-8">
               {project.ideationImages.map((img, idx) => (
                 <figure key={idx}>
-                  <ClickableImage
-                    src={getImage(img.image)}
+                  <DynamicImage
+                    src={img.image}
                     alt={img.caption}
                     className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
                     onOpenLightbox={handleLightboxOpen}
@@ -394,8 +429,8 @@ const ProjectSingle = () => {
           </ReactMarkdown>
           <div className="flex flex-col gap-8 mt-8">
             <figure>
-              <ClickableImage
-                src={getImage('prototype4.png')}
+              <DynamicImage
+                src="prototype4.png"
                 alt="3DMark Interactive Mode prototype"
                 className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
                 onOpenLightbox={handleLightboxOpen}
@@ -457,8 +492,8 @@ const ProjectSingle = () => {
             <div className="flex flex-col gap-8">
               {project.screenshots.map((shot, idx) => (
                 <figure key={idx}>
-                  <ClickableImage
-                    src={getImage(shot.image)}
+                  <DynamicImage
+                    src={shot.image}
                     alt={shot.caption}
                     className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
                     onOpenLightbox={handleLightboxOpen}
@@ -537,8 +572,8 @@ const ProjectSingle = () => {
         </div>
         {project.banner && (
           <div className="md:w-80 w-full flex-shrink-0 flex" ref={imgContainerRef}>
-            <ClickableImage
-              src={getImage(project.banner)}
+            <DynamicImage
+              src={project.banner}
               alt="Project banner"
               className="w-full h-full object-cover [border-radius:6px_/_6px] border-2 border-zinc-200 dark:border-zinc-700"
               style={{ minHeight: 180 }}
@@ -560,8 +595,8 @@ const ProjectSingle = () => {
       </div>
       {/* Explanation image below intro */}
       <figure className="mb-8">
-        <ClickableImage
-          src={getImage('explaination.png')}
+        <DynamicImage
+          src="explaination.png"
           alt="Explanation diagram"
           className="w-full max-w-3xl mx-auto rounded border-2 border-zinc-200"
           onOpenLightbox={handleLightboxOpen}
