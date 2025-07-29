@@ -28,7 +28,6 @@ const Home = () => {
     'E-commerce',
     'Media Streaming',
     'File Systems',
-    'Hardware Integration',
     'Design Systems',
     'User Research',
   ];
