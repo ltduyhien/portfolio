@@ -1,5 +1,8 @@
 @use 'sass:color';
 
+@import 'highlight.js/styles/github.css';
+@import 'highlight.js/styles/github-dark.css';
+
 $brand: #28F4CC;
 $brand-dark: color.adjust($brand, $lightness: -25%);
 
@@ -36,10 +39,7 @@ $brand-dark: color.adjust($brand, $lightness: -25%);
 .dark {
   --color-brand: #{color.channel($brand, 'red', rgb)} #{color.channel($brand, 'green', rgb)} #{color.channel($brand, 'blue', rgb)};
   --color-hover-bg: rgba(255,255,255,0.025);
-  @import 'highlight.js/styles/github-dark.css';
 }
-
-@import 'highlight.js/styles/github.css';
 
 /* Highlight.js color overrides and border for dark mode */
 body.dark .hljs-literal,
