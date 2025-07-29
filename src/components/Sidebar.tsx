@@ -207,7 +207,7 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
                 Projects
               </Link>
               <div className="text-sm text-zinc-600 dark:text-zinc-400">
-                Senior Product Designer
+                Selected Work & Highlights
               </div>
             </div>
           </div>
