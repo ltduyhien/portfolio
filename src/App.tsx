@@ -12,7 +12,7 @@ import ProjectSingle from './pages/ProjectSingle';
 const App = () => {
   const [darkMode, setDarkMode] = useState(() => {
     const savedMode = localStorage.getItem('darkMode');
-    return savedMode ? JSON.parse(savedMode) : true;
+    return savedMode ? JSON.parse(savedMode) : false;
   });
   const [menuOpen, setMenuOpen] = useState(false);
   const [showMobileHeader, setShowMobileHeader] = useState(true);
