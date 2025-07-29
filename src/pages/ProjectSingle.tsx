@@ -6,6 +6,7 @@ import rehypeHighlight from 'rehype-highlight';
 import { visit } from 'unist-util-visit';
 import { Node } from 'unist';
 import rehypeRaw from 'rehype-raw';
+import hljs from 'highlight.js';
 
 import CollapsibleSection from '../components/CollapsibleSection';
 import Chip from '../components/Chip';
@@ -13,7 +14,12 @@ import ConsoleBlock from '../components/ConsoleBlock';
 import ClickableImage from '../components/ClickableImage';
 
 import { PROJECTS_ORDER } from './projectsOrder';
-import 'highlight.js/styles/atom-one-dark.css';
+import 'highlight.js/styles/github-dark.css';
+
+// Configure highlight.js
+hljs.configure({
+  ignoreUnescapedHTML: true,
+});
 
 interface Screenshot {
   image: string;

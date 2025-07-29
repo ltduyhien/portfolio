@@ -11,8 +11,14 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
 import type { PluggableList } from 'unified';
+import hljs from 'highlight.js';
 
 import CollapsibleSection from './CollapsibleSection';
+
+// Configure highlight.js
+hljs.configure({
+  ignoreUnescapedHTML: true,
+});
 
 export interface ProjectSectionProps {
   title: string;
