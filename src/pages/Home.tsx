@@ -73,7 +73,7 @@ const Home = () => {
       <p className="mb-4 text-base font-medium text-zinc-700 dark:text-zinc-300 leading-relaxed">
         I help turn complex technical systems into intuitive digital experiences that drive real
         business outcomes. My work focuses on user research, iterative design, and measurable impact
-        across SaaS platforms, enterprise tools, and mobile applications.
+        across SaaS platforms, enterprise tools, desktop applications, mobile applications, and AI-powered features.
       </p>
       <p className="text-base font-medium text-zinc-700 dark:text-zinc-300 leading-relaxed">
         Looking to learn more about my work and experience? Feel free to{' '}
