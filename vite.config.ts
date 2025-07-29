@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-const repoName = 'hienle-portfolio';
+const repoName = 'portfolio';
 
 export default defineConfig({
-  base: '/',
+  base: `/${repoName}/`,
   plugins: [react()],
 });
