@@ -46,8 +46,8 @@ const SidebarNav: React.FC<SidebarNavProps> = React.memo(({ pathname, handleMenu
           >
             Projects
           </Link>
-          <div className="text-base text-zinc-800 dark:text-zinc-400">
-            Selected work & highlights
+          <div className="text-base text-zinc-600 dark:text-zinc-400">
+            Selected Work & Highlights
           </div>
         </div>
       </li>
