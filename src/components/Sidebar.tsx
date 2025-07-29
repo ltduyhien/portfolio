@@ -59,7 +59,7 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
           <Link
             to="/"
             onClick={handleMenuItemClick('/')}
-            className={`font-bold text-2xl uppercase font-medium ${pathname === '/' ? 'text-brand' : ''}`}
+            className={`font-extrabold text-2xl uppercase ${pathname === '/' ? 'text-brand' : ''}`}
           >
             HIEN LE
           </Link>
@@ -176,7 +176,7 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
             <span className="absolute left-0 top-0 h-full w-[4px] rounded bg-brand" />
           )}
           <div className="pl-8 mb-8">
-            <Link to="/" className="font-bold text-xl text-brand">
+            <Link to="/" className="font-extrabold text-xl text-brand">
               HIEN LE
             </Link>
             <div className="text-sm text-zinc-600 dark:text-zinc-400">Senior Product Designer</div>
@@ -201,12 +201,12 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
             <div className="pl-8">
               <Link
                 to="/projects"
-                className={`font-semibold ${pathname.startsWith('/projects') ? 'text-brand' : ''} hover:text-brand`}
+                className={`font-bold text-xl ${pathname.startsWith('/projects') ? 'text-brand' : ''} hover:text-brand`}
                 onClick={handleMenuItemClick('/projects')}
               >
                 Projects
               </Link>
-              <div className="text-sm text-zinc-600 dark:text-zinc-400">
+              <div className="text-base text-zinc-600 dark:text-zinc-400">
                 Selected Work & Highlights
               </div>
             </div>
@@ -228,12 +228,12 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
             <div className="pl-8">
               <Link
                 to="/github"
-                className={`font-semibold ${pathname === '/github' ? 'text-brand' : ''} hover:text-brand`}
+                className={`font-bold text-xl ${pathname === '/github' ? 'text-brand' : ''} hover:text-brand`}
                 onClick={handleMenuItemClick('/github')}
               >
                 Github
               </Link>
-              <div className="text-sm text-zinc-600 dark:text-zinc-400">Codebase & tools</div>
+              <div className="text-base text-zinc-600 dark:text-zinc-400">Codebase & tools</div>
             </div>
           </div> */}
           {/* About */}
@@ -253,12 +253,12 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
             <div className="pl-8">
               <Link
                 to="/about"
-                className={`font-semibold ${pathname === '/about' ? 'text-brand' : ''} hover:text-brand`}
+                className={`font-bold text-xl ${pathname === '/about' ? 'text-brand' : ''} hover:text-brand`}
                 onClick={handleMenuItemClick('/about')}
               >
                 About
               </Link>
-              <div className="text-sm text-zinc-600 dark:text-zinc-400">
+              <div className="text-base text-zinc-600 dark:text-zinc-400">
                 Designer, builder, product thinker
               </div>
             </div>
