@@ -15,10 +15,12 @@ import hljs from 'highlight.js';
 
 import CollapsibleSection from './CollapsibleSection';
 
-// Configure highlight.js
-hljs.configure({
-  ignoreUnescapedHTML: true,
-});
+// Configure highlight.js with defensive programming
+if (typeof hljs !== 'undefined') {
+  hljs.configure({
+    ignoreUnescapedHTML: true,
+  });
+}
 
 export interface ProjectSectionProps {
   title: string;

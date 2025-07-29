@@ -16,10 +16,12 @@ import ClickableImage from '../components/ClickableImage';
 import { PROJECTS_ORDER } from './projectsOrder';
 import 'highlight.js/styles/github-dark.css';
 
-// Configure highlight.js
-hljs.configure({
-  ignoreUnescapedHTML: true,
-});
+// Configure highlight.js with defensive programming
+if (typeof hljs !== 'undefined') {
+  hljs.configure({
+    ignoreUnescapedHTML: true,
+  });
+}
 
 interface Screenshot {
   image: string;
