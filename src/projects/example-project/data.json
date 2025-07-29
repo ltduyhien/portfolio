@@ -1,0 +1,37 @@
+{
+  "title": "This Project Title",
+  "banner": "main.jpg",
+  "summary": "With over 13 years of experience in UX and product design, I have led design work on SaaS platforms, AI benchmarking tools, and enterprise analytics systems used across desktop, web, and mobile.",
+  "problem": "The challenge was to streamline complex CPQ logic interfaces for enterprise users, making them intuitive and efficient to use.",
+  "constraints": "Tight timeline, legacy tech stack, distributed team, and highly technical user base.",
+  "keyDecisions": [
+    "Adopted a drag-and-drop interface for pricing logic.",
+    "Prioritized onboarding flows for new users.",
+    "Used analytics to inform design iterations."
+  ],
+  "outcomes": "Reduced onboarding time by 30%, improved user satisfaction scores, and received positive feedback from stakeholders.",
+  "screenshots": [
+    {
+      "image": "section1.jpg",
+      "caption": "Annotated service blueprint used in design process."
+    },
+    {
+      "image": "section2.jpg",
+      "caption": "Final prototype with user flow highlights."
+    }
+  ],
+  "appendices": [
+    {
+      "label": "Full Research Report",
+      "url": "#"
+    },
+    {
+      "label": "User Flows",
+      "url": "#"
+    },
+    {
+      "label": "Interactive Prototype",
+      "url": "#"
+    }
+  ]
+} 

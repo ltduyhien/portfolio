@@ -1,0 +1,103 @@
+@use 'sass:color';
+
+$brand: #28F4CC;
+$brand-dark: color.adjust($brand, $lightness: -25%);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container-custom {
+    @apply w-full mx-auto px-4;
+  }
+  @screen sm {
+    .container-custom {
+      max-width: 640px;
+    }
+  }
+  @screen md {
+    .container-custom {
+      max-width: 768px;
+    }
+  }
+  @screen lg {
+    .container-custom {
+      max-width: 75ch;
+    }
+  }
+}
+
+:root {
+  --color-brand: #{color.channel($brand-dark, 'red', rgb)} #{color.channel($brand-dark, 'green', rgb)} #{color.channel($brand-dark, 'blue', rgb)};
+  --color-hover-bg: rgba(255,255,255,0.025);
+  --shadow-chip: 0 2px 8px 0 rgba(0,0,0,0.04);
+}
+.dark {
+  --color-brand: #{color.channel($brand, 'red', rgb)} #{color.channel($brand, 'green', rgb)} #{color.channel($brand, 'blue', rgb)};
+  --color-hover-bg: rgba(255,255,255,0.025);
+  @import 'highlight.js/styles/atom-one-dark.css';
+}
+
+@import 'highlight.js/styles/atom-one-light.css';
+
+/* Highlight.js color overrides and border for dark mode */
+body.dark .hljs-literal,
+body.dark .hljs-number,
+body.dark .hljs-symbol,
+body.dark .hljs-bullet,
+body.dark .hljs-attr,
+body.dark .hljs-variable,
+body.dark .hljs-template-variable,
+body.dark .hljs-type,
+body.dark .hljs-selector-id,
+body.dark .hljs-selector-class {
+  color: #ffb86c !important; /* Brighter orange */
+}
+body.dark .hljs-string,
+body.dark .hljs-title,
+body.dark .hljs-section,
+body.dark .hljs-selector-tag,
+body.dark .hljs-addition,
+body.dark .hljs-keyword,
+body.dark .hljs-built_in,
+body.dark .hljs-builtin-name,
+body.dark .hljs-meta,
+body.dark .hljs-link {
+  color: #7CFFB2 !important; /* Slightly brighter green */
+}
+body.dark .hljs {
+  color: #e5e7eb !important; /* zinc-200 for good contrast in dark mode */
+}
+body.dark .border-b {
+  border-bottom-color: rgba(255,255,255,0.04) !important;
+}
+body.dark code.hljs {
+  border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+}
+
+/* Highlight.js green color override for light mode (less dark) */
+body:not(.dark) .hljs-string,
+body:not(.dark) .hljs-title,
+body:not(.dark) .hljs-section,
+body:not(.dark) .hljs-selector-tag,
+body:not(.dark) .hljs-addition,
+body:not(.dark) .hljs-keyword,
+body:not(.dark) .hljs-built_in,
+body:not(.dark) .hljs-builtin-name,
+body:not(.dark) .hljs-meta,
+body:not(.dark) .hljs-link {
+  color: #129F3A !important; /* Custom muted green */
+}
+body:not(.dark) .hljs-literal,
+body:not(.dark) .hljs-number,
+body:not(.dark) .hljs-symbol,
+body:not(.dark) .hljs-bullet,
+body:not(.dark) .hljs-attr,
+body:not(.dark) .hljs-variable,
+body:not(.dark) .hljs-template-variable,
+body:not(.dark) .hljs-type,
+body:not(.dark) .hljs-selector-id,
+body:not(.dark) .hljs-selector-class {
+  color: #E87406 !important; /* Custom orange */
+}
