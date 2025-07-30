@@ -8,11 +8,6 @@ const githubProjects = [
     url: 'https://github.com/ltduyhien/humidifier',
   },
   {
-    title: 'Portfolio',
-    description: 'Senior Product Designer portfolio built with React, TypeScript, and Tailwind CSS',
-    url: 'https://github.com/ltduyhien/ltduyhien.github.io',
-  },
-  {
     title: '3DMark Benchmark Result',
     description: 'Landing page to show benchmark results from users with Time Spy Extreme task',
     url: 'https://github.com/ltduyhien/3dmark-benchmark-result',
