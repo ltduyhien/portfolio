@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { trackLinkedInClick, trackEmailClick } from '../utils/analytics';
+import { trackLinkedInClick, trackEmailClick, trackCVDownload } from '../utils/analytics';
 
 const Footer = () => {
   return (
@@ -20,9 +20,14 @@ const Footer = () => {
           Connecting
         </a>{' '}
         with me in LinkedIn,{' '}
-        <Link to="/about" className="text-brand hover:underline">
+        <a 
+          href="/cv_hien.pdf" 
+          download
+          className="text-brand hover:underline"
+          onClick={trackCVDownload}
+        >
           Downloading
-        </Link>{' '}
+        </a>{' '}
         my CV, or{' '}
         <a 
           href="mailto:letranduyhien@gmail.com" 
