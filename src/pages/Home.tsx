@@ -43,8 +43,10 @@ const Home = () => {
 
   useEffect(() => {
     async function loadProjects() {
+      // Filter out Procyon project for public display
+      const publicProjects = PROJECTS_ORDER.filter(proj => proj.slug !== 'procyon-reinvention');
       const loaded = await Promise.all(
-        PROJECTS_ORDER.slice(0, 4).map(async (proj) => {
+        publicProjects.slice(0, 4).map(async (proj) => {
           try {
             const mod = await import(`../projects/${proj.slug}/data.json`);
             return { ...mod.default, slug: proj.slug };
