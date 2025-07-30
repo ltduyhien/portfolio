@@ -2,20 +2,19 @@ import React from 'react';
 
 const githubProjects = [
   {
-    title: 'Git Hub Project Title',
-    description: 'Project description could be a bit long like this',
+    title: 'Humidifier',
+    description: 'Android app for humidity and temperature monitoring using OpenWeather API and GPS location',
+    url: 'https://github.com/ltduyhien/humidifier',
   },
   {
-    title: 'Git Hub Project Title',
-    description: 'Project description could be a bit long like this',
+    title: 'Portfolio',
+    description: 'Senior Product Designer portfolio built with React, TypeScript, and Tailwind CSS',
+    url: 'https://github.com/ltduyhien/ltduyhien.github.io',
   },
   {
-    title: 'Git Hub Project Title',
-    description: 'Project description could be a bit long like this',
-  },
-  {
-    title: 'Git Hub Project Title',
-    description: 'Project description could be a bit long like this',
+    title: 'Humidifier',
+    description: 'Android app for humidity and temperature monitoring using OpenWeather API and GPS location',
+    url: 'https://github.com/ltduyhien/humidifier',
   },
 ];
 
@@ -44,7 +43,13 @@ const Github = () => (
     </a>
     <div className="flex flex-col gap-6">
       {githubProjects.map((project, idx) => (
-        <div key={idx} className="flex items-center gap-4">
+        <a
+          key={idx}
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-4 hover:bg-zinc-50 dark:hover:bg-zinc-800 p-4 rounded-lg transition-colors"
+        >
           <div
             className="bg-zinc-700 dark:bg-zinc-800 flex-shrink-0 [border-radius:6px_/_6px]"
             style={{ width: 142, height: 80 }}
@@ -57,7 +62,7 @@ const Github = () => (
               {project.description}
             </span>
           </div>
-        </div>
+        </a>
       ))}
     </div>
   </div>
