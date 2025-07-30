@@ -18,6 +18,11 @@ const projectImages: Record<string, string> = import.meta.glob('../projects/*/*'
 const Projects = () => {
   const [projects, setProjects] = useState<ProjectData[]>([]);
   
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   // Page engagement tracking
   const { trackInteraction } = usePageEngagement({
     trackInteractions: true,
