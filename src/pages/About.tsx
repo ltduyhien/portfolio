@@ -1,10 +1,57 @@
-import React from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 
 import ExperienceCard from '../components/ExperienceCard';
 
 const About = () => {
+  const [openSections, setOpenSections] = useState<{ [key: string]: boolean }>({});
+  const [buttonLeft, setButtonLeft] = useState<string | null>(null);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleSectionToggle = useCallback((key: string, isOpen: boolean) => {
+    setOpenSections(prev => ({ ...prev, [key]: isOpen }));
+  }, []);
+
+  const handleCollapseAll = useCallback(() => {
+    setOpenSections({});
+  }, []);
+
+  const updateButtonPosition = useCallback(() => {
+    if (containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect();
+      const left = rect.left + rect.width / 2;
+      setButtonLeft(`${left}px`);
+    }
+  }, []);
+
+  useEffect(() => {
+    function updatePosition() {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        const left = rect.left + rect.width / 2;
+        setButtonLeft(`${left}px`);
+      }
+    }
+
+    updatePosition();
+    window.addEventListener('resize', updatePosition);
+    return () => window.removeEventListener('resize', updatePosition);
+  }, [openSections, isLightboxOpen]);
+
+  useEffect(() => {
+    if (Object.values(openSections).some(Boolean) && buttonLeft && !isLightboxOpen) {
+      const timeout = setTimeout(() => {
+        if (containerRef.current) {
+          const rect = containerRef.current.getBoundingClientRect();
+          const left = rect.left + rect.width / 2;
+          setButtonLeft(`${left}px`);
+        }
+      }, 100);
+      return () => clearTimeout(timeout);
+    }
+  }, [openSections, buttonLeft, isLightboxOpen]);
   return (
-    <div className="container-custom px-8 pt-24 pb-16 md:pt-8 md:pb-16">
+    <div ref={containerRef} className="container-custom px-8 pt-24 pb-16 md:pt-8 md:pb-16">
       <h2 className="text-xl font-bold mb-4 text-zinc-900 dark:text-white leading-relaxed">
         About Me
       </h2>
@@ -39,6 +86,9 @@ const About = () => {
       <ExperienceCard
         title="Product Design Specialist - UL Solutions (Former Futuremark)"
         date="2023 - Present"
+        expandLock={false}
+        isOpen={!!openSections['ul-solutions']}
+        onToggle={(open) => handleSectionToggle('ul-solutions', open)}
       >
         <p>
           Led product design for flagship benchmarking applications across desktop, mobile, and web
@@ -60,7 +110,13 @@ const About = () => {
           </li>
         </ul>
       </ExperienceCard>
-      <ExperienceCard title="Senior UX Designer - Nokia Oyj" date="2022 - 2023">
+      <ExperienceCard 
+        title="Senior UX Designer - Nokia Oyj" 
+        date="2022 - 2023"
+        expandLock={false}
+        isOpen={!!openSections['nokia']}
+        onToggle={(open) => handleSectionToggle('nokia', open)}
+      >
         <p>Led UX design for enterprise cloud and network services solutions:</p>
         <ul className="list-disc pl-8 space-y-1 mt-4">
           <li>
@@ -78,7 +134,13 @@ const About = () => {
           </li>
         </ul>
       </ExperienceCard>
-      <ExperienceCard title="Lead UX Designer - Tuxera Oy" date="2012 - 2021">
+      <ExperienceCard 
+        title="Lead UX Designer - Tuxera Oy" 
+        date="2012 - 2021"
+        expandLock={false}
+        isOpen={!!openSections['tuxera']}
+        onToggle={(open) => handleSectionToggle('tuxera', open)}
+      >
         <p>
           Led product design and development across multiple platforms and technologies, growing
           from UX Engineer to Lead Designer over 9 years:
@@ -114,7 +176,13 @@ const About = () => {
           </li>
         </ul>
       </ExperienceCard>
-      <ExperienceCard title="UX Software Engineer - RunToShop" date="2011 - 2012">
+      <ExperienceCard 
+        title="UX Software Engineer - RunToShop" 
+        date="2011 - 2012"
+        expandLock={false}
+        isOpen={!!openSections['runtoshop']}
+        onToggle={(open) => handleSectionToggle('runtoshop', open)}
+      >
         <p>User research and frontend development for web applications:</p>
         <ul className="list-disc pl-8 space-y-1 mt-4">
           <li>Conducted user research and designed websites and web applications</li>
@@ -126,6 +194,8 @@ const About = () => {
         title="Metropolia University of Applied Sciences"
         date="2007 - 2011"
         expandLock={false}
+        isOpen={!!openSections['metropolia']}
+        onToggle={(open) => handleSectionToggle('metropolia', open)}
       >
         <p>Bachelor Degree in IT</p>
         <p className="mt-2 text-base text-zinc-700 dark:text-zinc-200 leading-relaxed">
@@ -139,6 +209,8 @@ const About = () => {
         title="Foundations of User Experience Design"
         date="Google Certificate Program"
         expandLock={false}
+        isOpen={!!openSections['google-cert']}
+        onToggle={(open) => handleSectionToggle('google-cert', open)}
       >
         <p>Google Certificate Program</p>
         <p className="mt-2 text-base text-zinc-700 dark:text-zinc-200 leading-relaxed">
@@ -185,6 +257,19 @@ const About = () => {
           </a>
         </div>
       </div>
+      {Object.values(openSections).some(Boolean) && buttonLeft && !isLightboxOpen && (
+        <button
+          onClick={handleCollapseAll}
+          className="fixed bottom-8 z-50 bg-zinc-900 text-zinc-100 px-6 py-3 rounded-full shadow-lg font-semibold text-sm hover:bg-zinc-800 transition"
+          style={{
+            left: buttonLeft,
+            transform: 'translateX(-50%)',
+            pointerEvents: 'auto',
+          }}
+        >
+          Collapse All
+        </button>
+      )}
     </div>
   );
 };
