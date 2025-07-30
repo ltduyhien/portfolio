@@ -12,9 +12,9 @@ const githubProjects = [
     url: 'https://github.com/ltduyhien/ltduyhien.github.io',
   },
   {
-    title: 'Humidifier',
-    description: 'Android app for humidity and temperature monitoring using OpenWeather API and GPS location',
-    url: 'https://github.com/ltduyhien/humidifier',
+    title: '3DMark Benchmark Result',
+    description: 'Landing page to show benchmark results from users with Time Spy Extreme task',
+    url: 'https://github.com/ltduyhien/3dmark-benchmark-result',
   },
 ];
 
