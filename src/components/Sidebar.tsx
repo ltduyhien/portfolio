@@ -97,6 +97,33 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
             </div>
           </div>
         </div>
+        {/* CV */}
+        <div className="relative flex">
+          {pathname === '/cv' && (
+            <AnimatePresence>
+              <motion.div
+                key="selector-cv"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="absolute left-0 top-0 h-full w-[4px] rounded bg-brand"
+              />
+            </AnimatePresence>
+          )}
+          <div className="pl-8">
+            <Link
+              to="/cv"
+              className={`font-bold text-xl ${pathname === '/cv' ? 'text-brand' : ''} hover:text-brand`}
+              onClick={handleMenuItemClick('/cv')}
+            >
+              CV
+            </Link>
+            <div className="text-base text-zinc-600 dark:text-zinc-400">
+              Experience & Skills
+            </div>
+          </div>
+        </div>
         {/* Github */}
         {/* <div className="relative flex">
           {pathname === '/github' && (
@@ -208,6 +235,33 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
               </Link>
               <div className="text-sm text-zinc-600 dark:text-zinc-400">
                 Selected Work & Highlights
+              </div>
+            </div>
+          </div>
+          {/* CV */}
+          <div className="relative flex">
+            {pathname === '/cv' && (
+              <AnimatePresence>
+                <motion.div
+                  key="selector-cv"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.25 }}
+                  className="absolute left-0 top-0 h-full w-[4px] rounded bg-brand"
+                />
+              </AnimatePresence>
+            )}
+            <div className="pl-8">
+              <Link
+                to="/cv"
+                className={`font-bold text-xl ${pathname === '/cv' ? 'text-brand' : ''} hover:text-brand`}
+                onClick={handleMenuItemClick('/cv')}
+              >
+                CV
+              </Link>
+              <div className="text-sm text-zinc-600 dark:text-zinc-400">
+                Experience & Skills
               </div>
             </div>
           </div>

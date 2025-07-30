@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Projects from './pages/Projects';
 import About from './pages/About';
 import ProjectSingle from './pages/ProjectSingle';
+import CV from './pages/CV';
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(() => {
@@ -98,6 +99,7 @@ function ContentWithFade() {
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:slug" element={<ProjectSingle />} />
+            <Route path="/cv" element={<CV />} />
             {/* <Route path="/github" element={<Github />} /> */}
             <Route path="/about" element={<About />} />
           </Routes>
