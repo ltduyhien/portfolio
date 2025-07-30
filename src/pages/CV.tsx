@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../components/Footer';
 
 const CV = () => (
   <div className="container-custom px-8 pt-24 pb-16 md:py-16 max-w-2xl mx-auto">
@@ -31,6 +32,7 @@ const CV = () => (
         Contact Me
       </a>
     </div>
+    <Footer />
   </div>
 );
 

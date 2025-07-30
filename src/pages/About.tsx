@@ -1,6 +1,7 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 
 import ExperienceCard from '../components/ExperienceCard';
+import Footer from '../components/Footer';
 import { 
   trackCVDownload, 
   trackCollapseAll, 
@@ -245,59 +246,7 @@ const About = () => {
           Comprehensive UX design certification covering user research, wireframing, prototyping, and usability testing. The program included hands-on projects focused on creating user-centered design solutions, conducting user interviews, and developing interactive prototypes. This certification strengthened my understanding of design thinking methodologies and user experience best practices.
         </p>
       </ExperienceCard>
-      <div className="mt-8">
-        <h3 className="text-xl font-semibold mb-4 text-zinc-900 dark:text-white">
-          Looking to learn more about my work and experience?
-        </h3>
-        <p className="mb-2 text-base font-medium text-zinc-700 dark:text-zinc-200 leading-relaxed">
-          You can download my full CV below for a detailed look at the roles I've held, the projects
-          I've led, and the impact I've made.
-        </p>
-        <p className="mb-8 text-base font-medium text-zinc-700 dark:text-zinc-200 leading-relaxed">
-          If you think my background could be a good fit for your team or project, I'd love to hear
-          from you. Whether it's a full-time opportunity, freelance collaboration, or something in
-          between—feel free to reach out!
-        </p>
-        <div className="flex flex-col md:flex-row gap-4 mb-2">
-          <a
-            href="/cv_hien.pdf"
-            download
-            onClick={() => {
-              trackCVDownload();
-              // Track conversion from any project
-              const referrer = document.referrer;
-              if (referrer.includes('/projects/')) {
-                const projectSlug = referrer.split('/projects/')[1]?.split('/')[0];
-                if (projectSlug) {
-                  trackProjectConversion(projectSlug, 'cv_download');
-                }
-              }
-            }}
-            className="inline-flex items-center justify-center bg-brand text-white dark:text-black font-medium text-base px-6 [border-radius:4px_/_4px] w-full md:w-auto"
-            style={{ height: 42, fontSize: 16 }}
-          >
-            Download my CV
-          </a>
-          <a
-            href="https://www.linkedin.com/in/hienl/"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={trackLinkedInClick}
-            className="inline-flex items-center justify-center bg-zinc-600 dark:bg-zinc-700 text-white font-medium text-base px-6 [border-radius:4px_/_4px] w-full md:w-auto"
-            style={{ height: 42, fontSize: 16 }}
-          >
-            Connect on LinkedIn
-          </a>
-          <a
-            href="mailto:letranduyhien@gmail.com"
-            onClick={trackEmailClick}
-            className="inline-flex items-center justify-center bg-zinc-600 dark:bg-zinc-700 text-white font-medium text-base px-6 [border-radius:4px_/_4px] w-full md:w-auto"
-            style={{ height: 42, fontSize: 16 }}
-          >
-            Contact Me
-          </a>
-        </div>
-      </div>
+      <Footer />
       {Object.values(openSections).some(Boolean) && buttonLeft && !isLightboxOpen && (
         <button
           onClick={handleCollapseAll}

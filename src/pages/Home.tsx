@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Chip from '../components/Chip';
 import ProjectCard from '../components/ProjectCard';
 import ExperienceCard from '../components/ExperienceCard';
+import Footer from '../components/Footer';
 import { usePageEngagement } from '../hooks/usePageEngagement';
 
 import type { ProjectData } from './ProjectSingle';
@@ -82,25 +83,7 @@ const Home = () => {
       <p className="mb-4 text-base font-medium text-zinc-700 dark:text-zinc-300 leading-relaxed">
         Hello, I am Hien. I am a senior product designer based in Espoo, Finland. Currently designing features that help you improve and track your computer hardware performance at UL Solutions. My work focuses on user research, iterative design, and measurable impact across SaaS platforms, enterprise tools, desktop applications, mobile applications, and AI-powered features.
       </p>
-      <p className="text-base font-medium text-zinc-700 dark:text-zinc-300 leading-relaxed">
-        Looking to learn more about my work and experience? Feel free to{' '}
-        <Link 
-          to="/about" 
-          className="text-brand hover:underline"
-          onClick={() => trackInteraction('home_link_click', { link: 'explore_projects' })}
-        >
-          explore my projects
-        </Link>
-        , or{' '}
-        <Link 
-          to="/about" 
-          className="text-brand hover:underline"
-          onClick={() => trackInteraction('home_link_click', { link: 'get_in_touch' })}
-        >
-          get in touch
-        </Link>
-        .
-      </p>
+
       <h3 className="text-lg font-medium mb-4 mt-8 text-zinc-900 dark:text-white">My Work</h3>
       <div className="flex flex-col gap-6">
         {projects.map((project, idx) => (
@@ -217,29 +200,7 @@ const Home = () => {
           See more about me <span className="inline-block">&rarr;</span>
         </Link>
       </div>
-      <h3 className="text-lg font-medium mb-4 mt-12 text-zinc-900 dark:text-white">
-        Thanks for visiting :)
-      </h3>
-      <p className="text-base font-medium text-zinc-700 dark:text-zinc-200">
-        You can get in touch with me by{' '}
-        <a
-          href="https://www.linkedin.com/in/hien-le-ux/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-brand hover:underline"
-        >
-          Connecting
-        </a>{' '}
-        with me in LinkedIn,{' '}
-        <Link to="/about" className="text-brand hover:underline">
-          Downloading
-        </Link>{' '}
-        my CV, or{' '}
-        <a href="mailto:letranduyhien@gmail.com" className="text-brand hover:underline">
-          Sending
-        </a>{' '}
-        me Email.
-      </p>
+      <Footer />
     </div>
   );
 };

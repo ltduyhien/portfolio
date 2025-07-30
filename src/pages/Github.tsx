@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../components/Footer';
 
 const githubProjects = [
   {
@@ -60,9 +61,10 @@ const Github = () => (
             </span>
           </div>
         </a>
-      ))}
+              ))}
+      </div>
+      <Footer />
     </div>
-  </div>
-);
+  );
 
 export default Github;

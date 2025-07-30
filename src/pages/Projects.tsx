@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import ProjectCard from '../components/ProjectCard';
+import Footer from '../components/Footer';
 import { usePageEngagement } from '../hooks/usePageEngagement';
 import { setProjectCategory } from '../utils/analytics';
 
@@ -126,6 +127,7 @@ const Projects = () => {
           </Link>
         ))}
       </div>
+      <Footer />
     </div>
   );
 };
