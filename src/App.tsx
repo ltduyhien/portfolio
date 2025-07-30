@@ -89,6 +89,7 @@ function ContentWithFade() {
   
   // Track page views for Google Analytics
   useEffect(() => {
+    console.log('Route changed to:', location.pathname);
     trackPageView(location.pathname);
     // Test custom dimensions on first load
     if (location.pathname === '/') {
