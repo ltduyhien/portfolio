@@ -97,12 +97,12 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
             </div>
           </div>
         </div>
-        {/* CV */}
+        {/* Github */}
         <div className="relative flex">
-          {pathname === '/cv' && (
+          {pathname === '/github' && (
             <AnimatePresence>
               <motion.div
-                key="selector-cv"
+                key="selector-github"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -113,15 +113,13 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
           )}
           <div className="pl-8">
             <Link
-              to="/cv"
-              className={`font-bold text-xl ${pathname === '/cv' ? 'text-brand' : ''} hover:text-brand`}
-              onClick={handleMenuItemClick('/cv')}
+              to="/github"
+              className={`font-bold text-xl ${pathname === '/github' ? 'text-brand' : ''} hover:text-brand`}
+              onClick={handleMenuItemClick('/github')}
             >
-              CV
+              Github
             </Link>
-            <div className="text-base text-zinc-600 dark:text-zinc-400">
-              Experience & Skills
-            </div>
+            <div className="text-base text-zinc-600 dark:text-zinc-400">Codebase & tools</div>
           </div>
         </div>
         {/* Github */}
@@ -238,12 +236,12 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
               </div>
             </div>
           </div>
-          {/* CV */}
+          {/* Github */}
           <div className="relative flex">
-            {pathname === '/cv' && (
+            {pathname === '/github' && (
               <AnimatePresence>
                 <motion.div
-                  key="selector-cv"
+                  key="selector-github"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -254,15 +252,13 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
             )}
             <div className="pl-8">
               <Link
-                to="/cv"
-                className={`font-bold text-xl ${pathname === '/cv' ? 'text-brand' : ''} hover:text-brand`}
-                onClick={handleMenuItemClick('/cv')}
+                to="/github"
+                className={`font-bold ${pathname === '/github' ? 'text-brand' : ''} hover:text-brand`}
+                onClick={handleMenuItemClick('/github')}
               >
-                CV
+                Github
               </Link>
-              <div className="text-sm text-zinc-600 dark:text-zinc-400">
-                Experience & Skills
-              </div>
+              <div className="text-sm text-zinc-600 dark:text-zinc-400">Codebase & tools</div>
             </div>
           </div>
           {/* Github */}
