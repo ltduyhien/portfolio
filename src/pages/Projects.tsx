@@ -55,7 +55,7 @@ const Projects = () => {
   return (
     <div className="container-custom px-8 pt-24 pb-16 md:py-16">
       <h2 className="text-xl font-semibold mb-2 text-zinc-900 dark:text-white">
-        Selected Work & Highlights
+        Selected work & highlights
       </h2>
       <p className="mb-8 text-base font-medium text-zinc-700 dark:text-zinc-200 leading-relaxed max-w-2xl">
         Over the years, I have worked across different industries, from SaaS platforms and

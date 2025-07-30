@@ -94,7 +94,7 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
               Projects
             </Link>
             <div className="text-base text-zinc-600 dark:text-zinc-400">
-              Selected Work & Highlights
+              Selected work & highlights
             </div>
           </div>
         </div>
@@ -236,7 +236,7 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
                 Projects
               </Link>
               <div className="text-sm text-zinc-600 dark:text-zinc-400">
-                Selected Work & Highlights
+                Selected work & highlights
               </div>
             </div>
           </div>
