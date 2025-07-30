@@ -125,11 +125,11 @@ const About = () => {
       <ExperienceCard
         title="Metropolia University of Applied Sciences"
         date="2007 - 2011"
-        expandLock={true}
+        expandLock={false}
       >
         <p>Bachelor Degree in IT</p>
         <p className="mt-2 text-base text-zinc-700 dark:text-zinc-200 leading-relaxed">
-          Specialized in Information Systems with focus on software development, database
+          Major in Information Systems with focus on software development, database
           management, and system architecture. The program covered web technologies, user interface
           design, and enterprise software solutions, providing a strong foundation for technical
           product design and development.
@@ -138,9 +138,12 @@ const About = () => {
       <ExperienceCard
         title="Foundations of User Experience Design"
         date="Google Certificate Program"
-        expandLock={true}
+        expandLock={false}
       >
         <p>Google Certificate Program</p>
+        <p className="mt-2 text-base text-zinc-700 dark:text-zinc-200 leading-relaxed">
+          Comprehensive UX design certification covering user research, wireframing, prototyping, and usability testing. The program included hands-on projects focused on creating user-centered design solutions, conducting user interviews, and developing interactive prototypes. This certification strengthened my understanding of design thinking methodologies and user experience best practices.
+        </p>
       </ExperienceCard>
       <div className="mt-8">
         <h3 className="text-xl font-semibold mb-4 text-zinc-900 dark:text-white">
