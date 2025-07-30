@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import ProjectCard from '../components/ProjectCard';
+import { usePageEngagement } from '../hooks/usePageEngagement';
+import { setProjectCategory } from '../utils/analytics';
 
 import type { ProjectData } from './ProjectSingle';
 import { PROJECTS_ORDER } from './projectsOrder';
@@ -15,6 +17,12 @@ const projectImages: Record<string, string> = import.meta.glob('../projects/*/*'
 
 const Projects = () => {
   const [projects, setProjects] = useState<ProjectData[]>([]);
+  
+  // Page engagement tracking
+  const { trackInteraction } = usePageEngagement({
+    trackInteractions: true,
+    trackScroll: true
+  });
 
   useEffect(() => {
     async function loadProjects() {
@@ -41,6 +49,10 @@ const Projects = () => {
   }
 
   // Categorize projects
+  const desktopProjects = projects.filter(
+    (project) => project.slug === 'procyon-reinvention',
+  );
+
   const saasProjects = projects.filter(
     (project) =>
       project.slug === 'test-driver-cloud' ||
@@ -68,11 +80,22 @@ const Projects = () => {
       </p>
 
       <h3 className="text-lg font-medium mb-4 text-zinc-900 dark:text-white">
-        SaaS Enterprise App
+        Desktop Applications
       </h3>
       <div className="flex flex-col gap-6 mb-12">
-        {saasProjects.map((project, idx) => (
-          <Link key={idx} to={`/projects/${project.slug}`} className="block">
+        {desktopProjects.map((project, idx) => (
+          <Link 
+            key={idx} 
+            to={`/projects/${project.slug}`} 
+            className="block"
+            onClick={() => {
+              trackInteraction('project_card_click', { 
+                project_slug: project.slug,
+                category: 'desktop_applications'
+              });
+              setProjectCategory('Desktop Applications');
+            }}
+          >
             <ProjectCard
               title={project.title}
               subtitle={project.subtext || ''}
@@ -83,10 +106,48 @@ const Projects = () => {
         ))}
       </div>
 
-      <h3 className="text-lg font-medium mb-4 text-zinc-900 dark:text-white">Mobile App</h3>
+      <h3 className="text-lg font-medium mb-4 text-zinc-900 dark:text-white">
+        SaaS Enterprise Applications
+      </h3>
+      <div className="flex flex-col gap-6 mb-12">
+        {saasProjects.map((project, idx) => (
+          <Link 
+            key={idx} 
+            to={`/projects/${project.slug}`} 
+            className="block"
+            onClick={() => {
+              trackInteraction('project_card_click', { 
+                project_slug: project.slug,
+                category: 'saas_enterprise_applications'
+              });
+              setProjectCategory('SaaS Enterprise Applications');
+            }}
+          >
+            <ProjectCard
+              title={project.title}
+              subtitle={project.subtext || ''}
+              tags={project.industries || []}
+              imageUrl={getBannerUrl(project.slug || '', project.banner)}
+            />
+          </Link>
+        ))}
+      </div>
+
+      <h3 className="text-lg font-medium mb-4 text-zinc-900 dark:text-white">Mobile Applications</h3>
       <div className="flex flex-col gap-6">
         {mobileProjects.map((project, idx) => (
-          <Link key={idx} to={`/projects/${project.slug}`} className="block">
+          <Link 
+            key={idx} 
+            to={`/projects/${project.slug}`} 
+            className="block"
+            onClick={() => {
+              trackInteraction('project_card_click', { 
+                project_slug: project.slug,
+                category: 'mobile_applications'
+              });
+              setProjectCategory('Mobile Applications');
+            }}
+          >
             <ProjectCard
               title={project.title}
               subtitle={project.subtext || ''}

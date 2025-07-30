@@ -7,6 +7,16 @@ import { visit } from 'unist-util-visit';
 import { Node } from 'unist';
 import rehypeRaw from 'rehype-raw';
 import hljs from 'highlight.js';
+import { 
+  trackProjectView, 
+  trackCollapseAll, 
+  trackSectionToggle, 
+  trackLightboxOpen, 
+  trackLightboxClose,
+  trackProjectEngagement,
+  trackProjectInteraction,
+  trackProjectTimeSpent
+} from '../utils/analytics';
 
 import CollapsibleSection from '../components/CollapsibleSection';
 import Chip from '../components/Chip';
@@ -266,22 +276,37 @@ const ProjectSingle = () => {
 
   // Track open/closed state for each section
   const [openSections, setOpenSections] = useState<{ [key: string]: boolean }>({});
+  
+  // Enhanced engagement tracking
+  const [startTime, setStartTime] = useState<number>(Date.now());
+  const [interactionCount, setInteractionCount] = useState<number>(0);
+  const [scrollDepth, setScrollDepth] = useState<number>(0);
 
   const handleSectionToggle = useCallback((key: string, open: boolean) => {
     setOpenSections((prev) => ({ ...prev, [key]: open }));
-  }, []);
+    setInteractionCount(prev => prev + 1);
+    trackSectionToggle(key, open, slug || 'project');
+    trackProjectInteraction(slug || 'project', 'section_toggle', { section: key, isOpen: open });
+  }, [slug]);
 
   const handleCollapseAll = useCallback(() => {
     const closed = Object.fromEntries(SECTION_KEYS.map((k) => [k, false]));
     setOpenSections(closed);
-  }, []);
+    trackCollapseAll(slug || 'project');
+  }, [slug]);
 
   const handleLightboxOpen = useCallback(() => {
     setIsLightboxOpen(true);
-  }, []);
+    setInteractionCount(prev => prev + 1);
+    trackLightboxOpen(slug || 'project');
+    trackProjectInteraction(slug || 'project', 'lightbox_open');
+  }, [slug]);
 
   const handleLightboxClose = useCallback(() => {
     setIsLightboxOpen(false);
+    setInteractionCount(prev => prev + 1);
+    trackLightboxClose(slug || 'project');
+    trackProjectInteraction(slug || 'project', 'lightbox_close');
     // Force button position update after lightbox closes
     setTimeout(() => {
       if (containerRef.current) {
@@ -290,13 +315,19 @@ const ProjectSingle = () => {
         setButtonLeft(`${left}px`);
       }
     }, 100);
-  }, []);
+  }, [slug]);
 
   useEffect(() => {
     if (!slug) return;
     import(`../projects/${slug}/data.json`).then((mod) => {
       setProject(mod.default || mod);
       setLoading(false);
+      // Track project view
+      trackProjectView(slug);
+      // Reset engagement tracking
+      setStartTime(Date.now());
+      setInteractionCount(0);
+      setScrollDepth(0);
     });
   }, [slug]);
 
@@ -321,6 +352,40 @@ const ProjectSingle = () => {
     }
     updateButtonPosition();
   }, [openSections, isLightboxOpen]);
+
+  // Scroll depth tracking
+  useEffect(() => {
+    const handleScroll = () => {
+      if (containerRef.current) {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = Math.round((scrollTop / docHeight) * 100);
+        setScrollDepth(Math.max(scrollDepth, scrollPercent));
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [scrollDepth]);
+
+  // Track final engagement when component unmounts
+  useEffect(() => {
+    return () => {
+      if (slug && !loading) {
+        const timeSpent = Math.round((Date.now() - startTime) / 1000);
+        const sectionsViewed = Object.values(openSections).filter(Boolean).length;
+        
+        trackProjectEngagement(slug, {
+          sectionsViewed,
+          timeSpent,
+          interactions: interactionCount,
+          scrollDepth
+        });
+        
+        trackProjectTimeSpent(slug, timeSpent);
+      }
+    };
+  }, [slug, loading, startTime, openSections, interactionCount, scrollDepth]);
 
   // Additional effect to ensure button position is set when sections are open
   useEffect(() => {

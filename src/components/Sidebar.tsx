@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import Toggle from './Toggle';
+import { trackNavigation, trackDarkModeToggle } from '../utils/analytics';
 
 interface SidebarProps {
   darkMode: boolean;
@@ -19,6 +20,9 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
   // Helper to close menu on mobile
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   const handleMenuItemClick = (target: string) => (e: React.MouseEvent) => {
+    // Track navigation
+    trackNavigation(target);
+    
     if (isMobile && onCloseMenu) {
       e.preventDefault();
       onCloseMenu();
@@ -322,7 +326,10 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
         </nav>
         <hr className="w-full border-zinc-200 dark:border-zinc-700" />
         <div className="px-8 my-4 font-medium">
-          <Toggle checked={darkMode} onChange={toggleDarkMode} />
+          <Toggle checked={darkMode} onChange={() => {
+          trackDarkModeToggle(!darkMode);
+          toggleDarkMode();
+        }} />
         </div>
         <hr className="w-full border-zinc-200 dark:border-zinc-700" />
         <div className="absolute left-8 bottom-16 text-sm font-medium text-zinc-800 dark:text-zinc-400">

@@ -1,5 +1,9 @@
 export const PROJECTS_ORDER = [
   {
+    slug: 'procyon-reinvention',
+    title: 'Modernizing the Procyon Windows client architecture for better performance and development efficiency.',
+  },
+  {
     slug: 'test-driver-cloud',
     title: 'Cloud-based platform for automated PC performance testing and monitoring.',
   },

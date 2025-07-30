@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { trackLogoClick, trackMobileMenuToggle } from '../utils/analytics';
 
 interface MobileHeaderProps {
   menuOpen: boolean;
@@ -21,6 +22,7 @@ const MobileHeader = ({ menuOpen, toggleMenu, show }: MobileHeaderProps) => {
 
   const handleLogoClick = (e: React.MouseEvent) => {
     e.preventDefault();
+    trackLogoClick();
     if (menuOpen) {
       toggleMenu();
       setTimeout(() => {
@@ -57,7 +59,10 @@ const MobileHeader = ({ menuOpen, toggleMenu, show }: MobileHeaderProps) => {
               </div>
             </div>
           </div>
-          <button onClick={toggleMenu} className="p-3">
+          <button onClick={() => {
+            trackMobileMenuToggle(!menuOpen);
+            toggleMenu();
+          }} className="p-3">
             {menuOpen ? (
               <svg
                 width="28"

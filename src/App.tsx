@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import { trackPageView, testCustomDimensions } from './utils/analytics';
 
 import Sidebar from './components/Sidebar';
 import MobileHeader from './components/MobileHeader';
@@ -85,6 +86,16 @@ const App = () => {
 
 function ContentWithFade() {
   const location = useLocation();
+  
+  // Track page views for Google Analytics
+  useEffect(() => {
+    trackPageView(location.pathname);
+    // Test custom dimensions on first load
+    if (location.pathname === '/') {
+      testCustomDimensions();
+    }
+  }, [location.pathname]);
+  
   return (
     <div className="md:ml-72 min-h-screen pt-8 md:pt-12">
       <AnimatePresence mode="wait">

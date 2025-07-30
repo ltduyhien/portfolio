@@ -1,20 +1,48 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 
 import ExperienceCard from '../components/ExperienceCard';
+import { 
+  trackCVDownload, 
+  trackCollapseAll, 
+  trackSectionToggle, 
+  trackLinkedInClick, 
+  trackEmailClick,
+  trackProjectConversion,
+  setInteractionDepth
+} from '../utils/analytics';
+import { usePageEngagement } from '../hooks/usePageEngagement';
 
 const About = () => {
   const [openSections, setOpenSections] = useState<{ [key: string]: boolean }>({});
   const [buttonLeft, setButtonLeft] = useState<string | null>(null);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  
+  // Page engagement tracking
+  const { trackInteraction, trackSectionView } = usePageEngagement({
+    trackInteractions: true,
+    trackScroll: true,
+    trackSections: true
+  });
 
   const handleSectionToggle = useCallback((key: string, isOpen: boolean) => {
     setOpenSections(prev => ({ ...prev, [key]: isOpen }));
-  }, []);
+    trackSectionToggle(key, isOpen, 'about');
+    trackInteraction('section_toggle', { section: key, isOpen });
+    if (isOpen) {
+      trackSectionView(key);
+    }
+    
+    // Update interaction depth
+    const openCount = Object.values(openSections).filter(Boolean).length + (isOpen ? 1 : 0);
+    setInteractionDepth(openCount);
+  }, [trackInteraction, trackSectionView, openSections]);
 
   const handleCollapseAll = useCallback(() => {
     setOpenSections({});
-  }, []);
+    trackCollapseAll('about');
+    trackInteraction('collapse_all');
+  }, [trackInteraction]);
 
   const updateButtonPosition = useCallback(() => {
     if (containerRef.current) {
@@ -234,6 +262,17 @@ const About = () => {
           <a
             href="/cv_hien.pdf"
             download
+            onClick={() => {
+              trackCVDownload();
+              // Track conversion from any project
+              const referrer = document.referrer;
+              if (referrer.includes('/projects/')) {
+                const projectSlug = referrer.split('/projects/')[1]?.split('/')[0];
+                if (projectSlug) {
+                  trackProjectConversion(projectSlug, 'cv_download');
+                }
+              }
+            }}
             className="inline-flex items-center justify-center bg-brand text-white dark:text-black font-medium text-base px-6 [border-radius:4px_/_4px] w-full md:w-auto"
             style={{ height: 42, fontSize: 16 }}
           >
@@ -243,6 +282,7 @@ const About = () => {
             href="https://www.linkedin.com/in/hienl/"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={trackLinkedInClick}
             className="inline-flex items-center justify-center bg-zinc-600 dark:bg-zinc-700 text-white font-medium text-base px-6 [border-radius:4px_/_4px] w-full md:w-auto"
             style={{ height: 42, fontSize: 16 }}
           >
@@ -250,6 +290,7 @@ const About = () => {
           </a>
           <a
             href="mailto:letranduyhien@gmail.com"
+            onClick={trackEmailClick}
             className="inline-flex items-center justify-center bg-zinc-600 dark:bg-zinc-700 text-white font-medium text-base px-6 [border-radius:4px_/_4px] w-full md:w-auto"
             style={{ height: 42, fontSize: 16 }}
           >

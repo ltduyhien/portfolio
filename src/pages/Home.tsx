@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Chip from '../components/Chip';
 import ProjectCard from '../components/ProjectCard';
 import ExperienceCard from '../components/ExperienceCard';
+import { usePageEngagement } from '../hooks/usePageEngagement';
 
 import type { ProjectData } from './ProjectSingle';
 import { PROJECTS_ORDER } from './projectsOrder';
@@ -16,6 +17,12 @@ const projectImages = import.meta.glob('../projects/*/*', {
 });
 
 const Home = () => {
+  // Page engagement tracking
+  const { trackInteraction } = usePageEngagement({
+    trackInteractions: true,
+    trackScroll: true
+  });
+  
   const tags = [
     'SaaS',
     'Open-source',
@@ -75,11 +82,19 @@ const Home = () => {
       </p>
       <p className="text-base font-medium text-zinc-700 dark:text-zinc-300 leading-relaxed">
         Looking to learn more about my work and experience? Feel free to{' '}
-        <Link to="/about" className="text-brand hover:underline">
+        <Link 
+          to="/about" 
+          className="text-brand hover:underline"
+          onClick={() => trackInteraction('home_link_click', { link: 'explore_projects' })}
+        >
           explore my projects
         </Link>
         , or{' '}
-        <Link to="/about" className="text-brand hover:underline">
+        <Link 
+          to="/about" 
+          className="text-brand hover:underline"
+          onClick={() => trackInteraction('home_link_click', { link: 'get_in_touch' })}
+        >
           get in touch
         </Link>
         .
@@ -87,7 +102,15 @@ const Home = () => {
       <h3 className="text-lg font-medium mb-4 mt-8 text-zinc-900 dark:text-white">My Work</h3>
       <div className="flex flex-col gap-6">
         {projects.map((project, idx) => (
-          <Link key={idx} to={`/projects/${project.slug}`} className="block">
+          <Link 
+            key={idx} 
+            to={`/projects/${project.slug}`} 
+            className="block"
+            onClick={() => trackInteraction('home_project_click', { 
+              project_slug: project.slug,
+              position: idx + 1
+            })}
+          >
             <ProjectCard
               title={project.title}
               subtitle={project.subtext || ''}
