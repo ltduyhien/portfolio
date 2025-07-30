@@ -18,11 +18,6 @@ const projectImages: Record<string, string> = import.meta.glob('../projects/*/*'
 const Projects = () => {
   const [projects, setProjects] = useState<ProjectData[]>([]);
   
-  // Scroll to top when component mounts
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-  
   // Page engagement tracking
   const { trackInteraction } = usePageEngagement({
     trackInteractions: true,
@@ -54,10 +49,6 @@ const Projects = () => {
   }
 
   // Categorize projects
-  const desktopProjects = projects.filter(
-    (project) => project.slug === 'procyon-reinvention',
-  );
-
   const saasProjects = projects.filter(
     (project) =>
       project.slug === 'test-driver-cloud' ||
@@ -83,33 +74,6 @@ const Projects = () => {
         telecommunications, data analytics, developer tools, and smart devices, always focusing on
         how design can make technical systems more approachable and effective.
       </p>
-
-      <h3 className="text-lg font-medium mb-4 text-zinc-900 dark:text-white">
-        Desktop Applications
-      </h3>
-      <div className="flex flex-col gap-6 mb-12">
-        {desktopProjects.map((project, idx) => (
-          <Link 
-            key={idx} 
-            to={`/projects/${project.slug}`} 
-            className="block"
-            onClick={() => {
-              trackInteraction('project_card_click', { 
-                project_slug: project.slug,
-                category: 'desktop_applications'
-              });
-              setProjectCategory('Desktop Applications');
-            }}
-          >
-            <ProjectCard
-              title={project.title}
-              subtitle={project.subtext || ''}
-              tags={project.industries || []}
-              imageUrl={getBannerUrl(project.slug || '', project.banner)}
-            />
-          </Link>
-        ))}
-      </div>
 
       <h3 className="text-lg font-medium mb-4 text-zinc-900 dark:text-white">
         SaaS Enterprise Applications
