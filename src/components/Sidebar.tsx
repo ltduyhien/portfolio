@@ -53,7 +53,7 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
       <hr className="w-full border-zinc-200 dark:border-zinc-700 md:hidden" />
       <div className="relative hidden md:block">
         {pathname === '/' && (
-          <span className="absolute left-0 top-0 h-full w-[4px] rounded bg-brand" />
+          <span className="absolute left-0 top-0 h-full w-[4px] rounded bg-brand z-10" style={{ transform: 'translate3d(0, 0, 0)' }} />
         )}
         <div className="pl-8 mb-8">
           <Link
@@ -80,7 +80,8 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.25 }}
-                className="absolute left-0 top-0 h-full w-[4px] rounded bg-brand"
+                className="absolute left-0 top-0 h-full w-[4px] rounded bg-brand z-10"
+                style={{ transform: 'translate3d(0, 0, 0)' }}
               />
             </AnimatePresence>
           )}
@@ -107,7 +108,8 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.25 }}
-                className="absolute left-0 top-0 h-full w-[4px] rounded bg-brand"
+                className="absolute left-0 top-0 h-full w-[4px] rounded bg-brand z-10"
+                style={{ transform: 'translate3d(0, 0, 0)' }}
               />
             </AnimatePresence>
           )}
@@ -157,7 +159,8 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.25 }}
-                className="absolute left-0 top-0 h-full w-[4px] rounded bg-brand"
+                className="absolute left-0 top-0 h-full w-[4px] rounded bg-brand z-10"
+                style={{ transform: 'translate3d(0, 0, 0)' }}
               />
             </AnimatePresence>
           )}
@@ -198,7 +201,7 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
       >
         <div className="relative">
           {pathname === '/' && (
-            <span className="absolute left-0 top-0 h-full w-[4px] rounded bg-brand" />
+            <span className="absolute left-0 top-0 h-full w-[4px] rounded bg-brand z-10" style={{ transform: 'translate3d(0, 0, 0)' }} />
           )}
           <div className="pl-8 mb-8">
             <Link to="/" className="font-extrabold text-xl text-brand">
@@ -219,7 +222,8 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.25 }}
-                  className="absolute left-0 top-0 h-full w-[4px] rounded bg-brand"
+                  className="absolute left-0 top-0 h-full w-[4px] rounded bg-brand z-10"
+                  style={{ transform: 'translate3d(0, 0, 0)' }}
                 />
               </AnimatePresence>
             )}
@@ -246,7 +250,8 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.25 }}
-                  className="absolute left-0 top-0 h-full w-[4px] rounded bg-brand"
+                  className="absolute left-0 top-0 h-full w-[4px] rounded bg-brand z-10"
+                  style={{ transform: 'translate3d(0, 0, 0)' }}
                 />
               </AnimatePresence>
             )}
@@ -296,7 +301,8 @@ const Sidebar = ({ darkMode, toggleDarkMode, menuOpen, onCloseMenu }: SidebarPro
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.25 }}
-                  className="absolute left-0 top-0 h-full w-[4px] rounded bg-brand"
+                  className="absolute left-0 top-0 h-full w-[4px] rounded bg-brand z-10"
+                  style={{ transform: 'translate3d(0, 0, 0)' }}
                 />
               </AnimatePresence>
             )}

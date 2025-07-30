@@ -21,10 +21,11 @@ const githubProjects = [
 const Github = () => (
   <div className="container-custom px-8 pt-24 pb-16 md:pt-8 md:pb-16 max-w-2xl mx-auto">
     <h2 className="text-xl font-bold mb-2 text-zinc-900 dark:text-white">Github: ltduyhien</h2>
+    <p className="mb-4 text-base font-medium text-zinc-700 dark:text-zinc-200 leading-relaxed">
+      I specialize in front-end and mobile development, with skills in React, TypeScript, and modern web technologies. I also have sufficient experience in backend development and DevOps practices. For mobile development, I work with native Android development, creating apps that deliver smooth user experiences across different devices and screen sizes.
+    </p>
     <p className="mb-6 text-base font-medium text-zinc-700 dark:text-zinc-200 leading-relaxed">
-      I help turn complex technical systems into intuitive digital experiences that drive real
-      business outcomes, whether it is reducing onboarding time, improving conversion, or enabling
-      data-driven decision-making.
+      My development work focuses on creating responsive, accessible, and performant user interfaces. I build with React ecosystem tools, implement responsive design principles. I prioritize clean code architecture, component reusability, and maintainable codebases that scale with project growth.
     </p>
     <a
       href="https://github.com/ltduyhien"
@@ -48,12 +49,8 @@ const Github = () => (
           href={project.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-4 hover:bg-zinc-50 dark:hover:bg-zinc-800 p-4 rounded-lg transition-colors"
+          className="flex items-center gap-4 bg-zinc-50 dark:bg-zinc-800 p-4 rounded-lg transition-colors border-2 border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-700"
         >
-          <div
-            className="bg-zinc-700 dark:bg-zinc-800 flex-shrink-0 [border-radius:6px_/_6px]"
-            style={{ width: 142, height: 80 }}
-          />
           <div className="flex flex-col justify-center">
             <span className="text-base font-bold text-zinc-900 dark:text-white leading-tight mb-1">
               {project.title}
