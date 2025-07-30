@@ -8,11 +8,12 @@ declare global {
 export const trackPageView = (path: string, title?: string) => {
   if (typeof window !== 'undefined' && window.gtag) {
     console.log('Tracking page view:', path, title || document.title);
-    // For SPAs, use config with page_path and send_page_view: true
-    window.gtag('config', 'G-HVEX9KVCN3', {
-      page_path: path,
+    console.log('Full URL:', window.location.origin + path);
+    // For SPAs, use event with page_view to track individual page views
+    window.gtag('event', 'page_view', {
       page_title: title || document.title,
-      send_page_view: true
+      page_location: window.location.origin + path,
+      page_path: path
     });
   }
 };
