@@ -11,7 +11,7 @@ const Footer = () => {
       <p className="text-base font-medium text-zinc-700 dark:text-zinc-200">
         You can get in touch with me by{' '}
         <a
-          href="https://www.linkedin.com/in/hien-le-ux/"
+          href="https://www.linkedin.com/in/hienl"
           target="_blank"
           rel="noopener noreferrer"
           className="text-brand hover:underline"

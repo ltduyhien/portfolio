@@ -154,8 +154,7 @@ const About = () => {
         <p>Led UX design for enterprise cloud and network services solutions:</p>
         <ul className="list-disc pl-8 space-y-1 mt-4">
           <li>
-            Designed <strong>AVA Open Analytics</strong> prototype through end-to-end interaction
-            design process
+            Designed <strong>AVA Open Analytics</strong> and <strong>CPQ Pricing Tool</strong> through end-to-end design process
           </li>
           <li>
             Conducted user research and usability testing to identify pain points and validate
