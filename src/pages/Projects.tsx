@@ -54,7 +54,8 @@ const Projects = () => {
     (project) =>
       project.slug === 'test-driver-cloud' ||
       project.slug === 'cpq-pricing-tool' ||
-      project.slug === 'smb-admin-panel',
+      project.slug === 'smb-admin-panel' ||
+      project.slug === 'nokia-data-suite',
   );
 
   const mobileProjects = projects.filter(

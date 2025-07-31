@@ -616,38 +616,6 @@ const ProjectSingle = () => {
         </ReactMarkdown>
       ),
     },
-    // Design System sections - only for 3dmark-design-system project
-    slug === '3dmark-design-system' && project.researchIdeation && {
-      key: 'researchIdeation',
-      title: 'Research & Ideation',
-      content: (
-        <>
-          <ReactMarkdown
-            remarkPlugins={[remarkConsoleBlock]}
-            rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeConsoleBlock]}
-            components={markdownComponents}
-          >
-            {project.researchIdeation}
-          </ReactMarkdown>
-          <div className="flex flex-col gap-8 mt-8">
-            <figure>
-              <DynamicImage
-                src="ideation.png"
-                alt="Cross-functional workshop session defining 3DMark design system values"
-                className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
-                onOpenLightbox={handleLightboxOpen}
-                onCloseLightbox={handleLightboxClose}
-                caption="Cross-functional workshop session defining 3DMark design system values"
-              />
-              <figcaption className="text-sm text-zinc-500 dark:text-zinc-400 text-center">
-                Cross-functional workshop session defining 3DMark design system values
-              </figcaption>
-            </figure>
-          </div>
-        </>
-      ),
-      hasImages: true,
-    },
     slug === '3dmark-design-system' && project.Principles && {
       key: 'principles',
       title: 'Principles',
