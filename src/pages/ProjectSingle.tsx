@@ -22,6 +22,7 @@ import CollapsibleSection from '../components/CollapsibleSection';
 import Chip from '../components/Chip';
 import ConsoleBlock from '../components/ConsoleBlock';
 import ClickableImage from '../components/ClickableImage';
+import Footer from '../components/Footer';
 
 import { PROJECTS_ORDER } from './projectsOrder';
 import 'highlight.js/styles/github-dark.css';
@@ -872,9 +873,14 @@ const ProjectSingle = () => {
       {/* Top Section: Title, Info, Banner */}
       <div className="flex flex-col md:flex-row gap-8 mb-8 items-stretch">
         <div className="flex-1 flex flex-col" ref={leftRef}>
-          <h1 className="text-xl font-bold mb-4 text-zinc-900 dark:text-zinc-100 leading-normal">
+          <h1 className="text-2xl md:text-xl font-bold mb-2 md:mb-4 text-zinc-900 dark:text-zinc-100 leading-normal">
             {project.title}
           </h1>
+          {project.subtext && (
+            <div className="text-lg md:text-base font-medium text-zinc-600 dark:text-zinc-400 mb-4 md:mb-2">
+              {project.subtext}
+            </div>
+          )}
           {project.timeSpent && (
             <div
               className="mb-1 text-base font-medium text-zinc-900 dark:text-zinc-100"
@@ -1017,6 +1023,7 @@ const ProjectSingle = () => {
           Collapse All
         </button>
       )}
+      <Footer />
     </div>
   );
 };

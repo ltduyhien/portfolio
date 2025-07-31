@@ -24,10 +24,10 @@ const ProjectCard = ({ title, subtitle, tags, imageUrl }: ProjectCardProps) => {
         )}
       </div>
       <div className="flex-1 flex flex-col justify-between gap-2 py-2">
-        <h3 className="text-base font-bold leading-normal text-zinc-900 dark:text-white mb-0">
+        <h3 className="text-lg md:text-base font-bold leading-normal text-zinc-900 dark:text-white mb-0">
           {title}
         </h3>
-        <p className="text-sm font-medium text-zinc-700 dark:text-zinc-400 mb-2">{subtitle}</p>
+        <p className="text-base md:text-sm font-medium text-zinc-700 dark:text-zinc-400 mb-2">{subtitle}</p>
         <div className="flex flex-wrap gap-2 mt-auto">
           {tags.map((tag) => (
             <Chip key={tag} text={tag} />
