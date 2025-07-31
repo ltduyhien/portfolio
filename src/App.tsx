@@ -97,11 +97,6 @@ function ContentWithFade() {
     }
   }, [location.pathname]);
   
-  // Reset scroll position on route change
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
-  
   return (
     <div className="md:ml-72 min-h-screen pt-8 md:pt-12">
       <AnimatePresence mode="wait">

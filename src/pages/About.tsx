@@ -26,6 +26,11 @@ const About = () => {
     trackSections: true
   });
 
+  // Ensure page starts at top when navigating to About page
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleSectionToggle = useCallback((key: string, isOpen: boolean) => {
     setOpenSections(prev => ({ ...prev, [key]: isOpen }));
     trackSectionToggle(key, isOpen, 'about');

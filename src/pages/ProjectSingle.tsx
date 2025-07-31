@@ -66,6 +66,18 @@ export interface ProjectData {
   aiSuggestionDesign?: string; // Added for AI Suggestion Design section
   aiFeatures?: string; // Added for AI Features section
   interactiveMode?: string; // Added for Interactive Mode section
+  // Design System sections
+  Principles?: string;
+  Fundamental?: string;
+  Accessibility?: string;
+  "Color Palette"?: string;
+  Typography?: string;
+  "Spacing & Layout"?: string;
+  Components?: string;
+  "Design Patterns"?: string;
+  Implementation?: string;
+  researchIdeation?: string;
+  Buttons?: string;
 }
 
 // Section keys for tracking open state
@@ -182,7 +194,7 @@ const markdownComponents = {
       <img
         src={imageSrc}
         alt={alt || ''}
-        className="w-full [border-radius:6px_/_6px] object-cover mb-4 border-2 border-zinc-200 dark:border-zinc-700"
+        className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
         {...rest}
       />
     );
@@ -414,7 +426,8 @@ const ProjectSingle = () => {
 
   // Build dynamic sections array
   const sections = [
-    project.problem && {
+    // Standard project sections - exclude for Design System project
+    slug !== '3dmark-design-system' && project.problem && {
       key: 'challenges',
       title: 'Challenges',
       content: (
@@ -427,7 +440,7 @@ const ProjectSingle = () => {
         </ReactMarkdown>
       ),
     },
-    project.constraints && {
+    slug !== '3dmark-design-system' && project.constraints && {
       key: 'collaboration',
       title: 'Collaboration',
       content: (
@@ -440,7 +453,7 @@ const ProjectSingle = () => {
         </ReactMarkdown>
       ),
     },
-    project.ideation && {
+    slug !== '3dmark-design-system' && project.ideation && {
       key: 'ideation',
       title: 'Research & Ideation',
       content: (
@@ -475,7 +488,7 @@ const ProjectSingle = () => {
       ),
       hasImages: true,
     },
-    project.aiSuggestionDesign && {
+    slug !== '3dmark-design-system' && project.aiSuggestionDesign && {
       key: 'aiSuggestionDesign',
       title: 'AI Features',
       content: (
@@ -488,7 +501,7 @@ const ProjectSingle = () => {
         </ReactMarkdown>
       ),
     },
-    project.interactiveMode && {
+    slug !== '3dmark-design-system' && project.interactiveMode && {
       key: 'interactiveMode',
       title: '3DMark Interactive Mode',
       content: (
@@ -521,7 +534,7 @@ const ProjectSingle = () => {
       ),
       hasImages: true,
     },
-    project.keyDecisions && {
+    slug !== '3dmark-design-system' && project.keyDecisions && {
       key: 'decisions',
       title: 'Key Decisions',
       content: (
@@ -536,7 +549,7 @@ const ProjectSingle = () => {
         </ReactMarkdown>
       ),
     },
-    (project.api || project.apiSection) && {
+    slug !== '3dmark-design-system' && (project.api || project.apiSection) && {
       key: 'api',
       title: 'API Design & Integration',
       content: (() => {
@@ -552,7 +565,7 @@ const ProjectSingle = () => {
         );
       })(),
     },
-    project.screenshots &&
+    slug !== '3dmark-design-system' && project.screenshots &&
       project.screenshots.length > 0 && {
         key: 'prototypes',
         title: 'Prototypes',
@@ -583,7 +596,7 @@ const ProjectSingle = () => {
         ),
         hasImages: true,
       },
-    project.outcomes && {
+    slug !== '3dmark-design-system' && project.outcomes && {
       key: 'outcomes',
       title: 'Business Impact & Testing',
       content: (
@@ -593,6 +606,249 @@ const ProjectSingle = () => {
           components={markdownComponents}
         >
           {project.outcomes}
+        </ReactMarkdown>
+      ),
+    },
+    // Design System sections - only for 3dmark-design-system project
+    slug === '3dmark-design-system' && project.researchIdeation && {
+      key: 'researchIdeation',
+      title: 'Research & Ideation',
+      content: (
+        <>
+          <ReactMarkdown
+            remarkPlugins={[remarkConsoleBlock]}
+            rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeConsoleBlock]}
+            components={markdownComponents}
+          >
+            {project.researchIdeation}
+          </ReactMarkdown>
+          <div className="flex flex-col gap-8 mt-8">
+            <figure>
+              <DynamicImage
+                src="ideation.png"
+                alt="Cross-functional workshop session defining 3DMark design system values"
+                className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
+                onOpenLightbox={handleLightboxOpen}
+                onCloseLightbox={handleLightboxClose}
+                caption="Cross-functional workshop session defining 3DMark design system values"
+              />
+              <figcaption className="text-sm text-zinc-500 dark:text-zinc-400 text-center">
+                Cross-functional workshop session defining 3DMark design system values
+              </figcaption>
+            </figure>
+          </div>
+        </>
+      ),
+      hasImages: true,
+    },
+    slug === '3dmark-design-system' && project.Principles && {
+      key: 'principles',
+      title: 'Principles',
+      content: (
+        <ReactMarkdown
+          remarkPlugins={[remarkConsoleBlock]}
+          rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeConsoleBlock]}
+          components={markdownComponents}
+        >
+          {project.Principles}
+        </ReactMarkdown>
+      ),
+    },
+    slug === '3dmark-design-system' && project.Fundamental && {
+      key: 'fundamental',
+      title: 'Fundamental',
+      content: (
+        <ReactMarkdown
+          remarkPlugins={[remarkConsoleBlock]}
+          rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeConsoleBlock]}
+          components={markdownComponents}
+        >
+          {project.Fundamental}
+        </ReactMarkdown>
+      ),
+    },
+    slug === '3dmark-design-system' && project.Accessibility && {
+      key: 'accessibility',
+      title: 'Accessibility',
+      content: (
+        <ReactMarkdown
+          remarkPlugins={[remarkConsoleBlock]}
+          rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeConsoleBlock]}
+          components={markdownComponents}
+        >
+          {project.Accessibility}
+        </ReactMarkdown>
+      ),
+    },
+    slug === '3dmark-design-system' && project["Color Palette"] && {
+      key: 'colorPalette',
+      title: 'Color Palette',
+      content: (
+        <>
+          <ReactMarkdown
+            remarkPlugins={[remarkConsoleBlock]}
+            rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeConsoleBlock]}
+            components={markdownComponents}
+          >
+            {project["Color Palette"]}
+          </ReactMarkdown>
+          <div className="flex flex-col gap-8 mt-8">
+            <figure>
+              <DynamicImage
+                src="color-light.png"
+                alt="Light theme color palette with brand colors and semantic variations"
+                className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
+                onOpenLightbox={handleLightboxOpen}
+                onCloseLightbox={handleLightboxClose}
+                caption="Light theme color palette with brand colors and semantic variations"
+              />
+              <figcaption className="text-sm text-zinc-500 dark:text-zinc-400 text-center">
+                Light theme color palette with brand colors and semantic variations
+              </figcaption>
+            </figure>
+            <figure>
+              <DynamicImage
+                src="color-dark.png"
+                alt="Dark theme color palette optimized for readability and visual hierarchy"
+                className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
+                onOpenLightbox={handleLightboxOpen}
+                onCloseLightbox={handleLightboxClose}
+                caption="Dark theme color palette optimized for readability and visual hierarchy"
+              />
+              <figcaption className="text-sm text-zinc-500 dark:text-zinc-400 text-center">
+                Dark theme color palette optimized for readability and visual hierarchy
+              </figcaption>
+            </figure>
+          </div>
+        </>
+      ),
+      hasImages: true,
+    },
+    slug === '3dmark-design-system' && project.Typography && {
+      key: 'typography',
+      title: 'Typography',
+      content: (
+        <>
+          <ReactMarkdown
+            remarkPlugins={[remarkConsoleBlock]}
+            rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeConsoleBlock]}
+            components={markdownComponents}
+          >
+            {project.Typography}
+          </ReactMarkdown>
+          <div className="flex flex-col gap-8 mt-8">
+            <figure>
+              <DynamicImage
+                src="typography-light.png"
+                alt="Light theme typography hierarchy and font system"
+                className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
+                onOpenLightbox={handleLightboxOpen}
+                onCloseLightbox={handleLightboxClose}
+                caption="Light theme typography hierarchy and font system"
+              />
+              <figcaption className="text-sm text-zinc-500 dark:text-zinc-400 text-center">
+                Light theme typography hierarchy and font system
+              </figcaption>
+            </figure>
+            <figure>
+              <DynamicImage
+                src="typography-dark.png"
+                alt="Dark theme typography with optimized contrast and readability"
+                className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
+                onOpenLightbox={handleLightboxOpen}
+                onCloseLightbox={handleLightboxClose}
+                caption="Dark theme typography with optimized contrast and readability"
+              />
+              <figcaption className="text-sm text-zinc-500 dark:text-zinc-400 text-center">
+                Dark theme typography with optimized contrast and readability
+              </figcaption>
+            </figure>
+          </div>
+        </>
+      ),
+      hasImages: true,
+    },
+    slug === '3dmark-design-system' && project.Buttons && {
+      key: 'buttons',
+      title: 'Buttons',
+      content: (
+        <>
+          <ReactMarkdown
+            remarkPlugins={[remarkConsoleBlock]}
+            rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeConsoleBlock]}
+            components={markdownComponents}
+          >
+            {project.Buttons}
+          </ReactMarkdown>
+          <div className="flex flex-col gap-8 mt-8">
+            <figure>
+              <DynamicImage
+                src="button-light.png"
+                alt="Light theme button variants and states"
+                className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
+                onOpenLightbox={handleLightboxOpen}
+                onCloseLightbox={handleLightboxClose}
+                caption="Light theme button variants and states"
+              />
+              <figcaption className="text-sm text-zinc-500 dark:text-zinc-400 text-center">
+                Light theme button variants and states
+              </figcaption>
+            </figure>
+            <figure>
+              <DynamicImage
+                src="button-dark.png"
+                alt="Dark theme button variants with optimized contrast"
+                className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
+                onOpenLightbox={handleLightboxOpen}
+                onCloseLightbox={handleLightboxClose}
+                caption="Dark theme button variants with optimized contrast"
+              />
+              <figcaption className="text-sm text-zinc-500 dark:text-zinc-400 text-center">
+                Dark theme button variants with optimized contrast
+              </figcaption>
+            </figure>
+          </div>
+        </>
+      ),
+      hasImages: true,
+    },
+
+    slug === '3dmark-design-system' && project.Components && {
+      key: 'components',
+      title: 'Components (Coming soon)',
+      content: (
+        <ReactMarkdown
+          remarkPlugins={[remarkConsoleBlock]}
+          rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeConsoleBlock]}
+          components={markdownComponents}
+        >
+          {project.Components}
+        </ReactMarkdown>
+      ),
+    },
+    slug === '3dmark-design-system' && project["Design Patterns"] && {
+      key: 'designPatterns',
+      title: 'Design Patterns (Coming soon)',
+      content: (
+        <ReactMarkdown
+          remarkPlugins={[remarkConsoleBlock]}
+          rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeConsoleBlock]}
+          components={markdownComponents}
+        >
+          {project["Design Patterns"]}
+        </ReactMarkdown>
+      ),
+    },
+    slug === '3dmark-design-system' && project.Implementation && {
+      key: 'implementation',
+      title: 'Implementation (Coming soon)',
+      content: (
+        <ReactMarkdown
+          remarkPlugins={[remarkConsoleBlock]}
+          rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeConsoleBlock]}
+          components={markdownComponents}
+        >
+          {project.Implementation}
         </ReactMarkdown>
       ),
     },
@@ -671,18 +927,18 @@ const ProjectSingle = () => {
         <DynamicImage
           src="explaination.png"
           alt="Explanation diagram"
-          className="w-full max-w-3xl mx-auto rounded border-2 border-zinc-200"
+          className="w-full max-w-3xl mx-auto rounded border-2 border-zinc-200 dark:border-zinc-700"
           onOpenLightbox={handleLightboxOpen}
           caption={
             slug === 'test-driver-cloud'
               ? 'Overview of TDC platform and workflow'
-              : 'Platform overview and workflow diagram'
+              : 'UI examples and component showcase'
           }
         />
         <figcaption className="text-center text-sm text-zinc-500 dark:text-zinc-400 mt-2">
           {slug === 'test-driver-cloud'
             ? 'Overview of TDC platform and workflow'
-            : 'Platform overview and workflow diagram'}
+            : 'UI examples and component showcase'}
         </figcaption>
       </figure>
       {/* Render sections, filtering out falsy values */}

@@ -105,7 +105,7 @@ const CollapsibleSection = ({
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <div ref={contentRef} className={`pt-4 ${extraBottomPadding ? 'pb-8' : 'pb-4'}`}>
+            <div ref={contentRef} className={`pt-4 pb-8`}>
               {children}
             </div>
           </motion.div>
