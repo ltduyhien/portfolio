@@ -1,6 +1,6 @@
 {
   "title": "Comprehensive design system for 3DMark ecosystem across web, mobile, and desktop platforms.",
-  "subtext": "Comprehensive component library and design guidelines",
+  "subtext": "3DMark Design System at UL Solutions",
   "slug": "3dmark-design-system",
   "banner": "header.png",
   "screenshots": [
@@ -39,7 +39,7 @@
   ],
   "appendices": [],
   "timeSpent": "Project Length: **12+ Months**",
-  "role": "**Senior Product Designer**",
+  "role": "**Product Design Specialist**",
   "industries": ["Design Systems", "3D", "Component Libraries"],
   "productName": "Design System",
   "summary": "A comprehensive design system that establishes consistent design patterns, components, and guidelines across all products and platforms. This system serves as the foundation for creating cohesive user experiences while maintaining scalability and maintainability.\n\n**The Challenge:** Our 3DMark ecosystem spans multiple platforms and user types: mobile apps on Android and iOS, web platforms serving both B2C and B2B users, and desktop applications across macOS, Windows, and expanding to Linux. This multi-platform complexity created inconsistent user experiences, redundant development work, and growing maintenance overhead.\n\n**The Solution:** We developed a unified design system that provides standardized components, patterns, and guidelines. Our design system ensures consistency across all 3DMark products while enabling faster development cycles, better collaboration between teams, and improved accessibility standards. By establishing a shared design language, we have created a scalable foundation that supports our growing ecosystem while maintaining the high-quality user experience our users expect.",
