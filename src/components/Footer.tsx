@@ -4,7 +4,7 @@ import { trackLinkedInClick, trackEmailClick, trackCVDownload } from '../utils/a
 
 const Footer = () => {
   return (
-    <div className="mt-16 mb-10">
+    <div className="mt-16">
       <h3 className="text-lg font-medium mb-4 text-zinc-900 dark:text-white">
         Thanks for visiting :)
       </h3>

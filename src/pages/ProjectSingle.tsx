@@ -347,7 +347,13 @@ const ProjectSingle = () => {
   useEffect(() => {
     function syncHeights() {
       if (leftRef.current && imgContainerRef.current) {
-        imgContainerRef.current.style.height = leftRef.current.offsetHeight + 'px';
+        // Only sync heights on desktop (md and up)
+        if (window.innerWidth >= 768) {
+          imgContainerRef.current.style.height = leftRef.current.offsetHeight + 'px';
+        } else {
+          // On mobile, remove any inline height
+          imgContainerRef.current.style.height = 'auto';
+        }
       }
     }
     syncHeights();
@@ -906,12 +912,12 @@ const ProjectSingle = () => {
           )}
         </div>
         {project.banner && (
-          <div className="md:w-80 w-full flex-shrink-0 flex" ref={imgContainerRef}>
+          <div className="md:w-80 w-full flex-shrink-0 md:flex" ref={imgContainerRef}>
             <DynamicImage
               src={project.banner}
               alt="Project banner"
-              className="w-full h-full object-cover [border-radius:6px_/_6px] border-2 border-zinc-200 dark:border-zinc-700"
-              style={{ minHeight: 180 }}
+              className="w-full h-auto md:h-full object-contain md:object-cover [border-radius:6px_/_6px] md:border-2 md:border-zinc-200 md:dark:border-zinc-700"
+              style={{ minHeight: 'auto' }}
               isProjectThumbnail={true}
               onOpenLightbox={handleLightboxOpen}
             />
