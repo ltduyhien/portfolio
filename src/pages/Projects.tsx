@@ -61,6 +61,10 @@ const Projects = () => {
     (project) => project.slug === 'allconnect-app' || project.slug === '3dmark-ios-app',
   );
 
+  const designSystemProjects = projects.filter(
+    (project) => project.slug === '3dmark-design-system',
+  );
+
   return (
     <div className="container-custom px-8 pt-24 pb-16 md:py-16">
       <h2 className="text-xl font-semibold mb-2 text-zinc-900 dark:text-white">
@@ -104,7 +108,7 @@ const Projects = () => {
       </div>
 
       <h3 className="text-lg font-medium mb-4 text-zinc-900 dark:text-white">Mobile Applications</h3>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 mb-12">
         {mobileProjects.map((project, idx) => (
           <Link 
             key={idx} 
@@ -116,6 +120,31 @@ const Projects = () => {
                 category: 'mobile_applications'
               });
               setProjectCategory('Mobile Applications');
+            }}
+          >
+            <ProjectCard
+              title={project.title}
+              subtitle={project.subtext || ''}
+              tags={project.industries || []}
+              imageUrl={getBannerUrl(project.slug || '', project.banner)}
+            />
+          </Link>
+        ))}
+      </div>
+
+      <h3 className="text-lg font-medium mb-4 text-zinc-900 dark:text-white">Design Systems</h3>
+      <div className="flex flex-col gap-6">
+        {designSystemProjects.map((project, idx) => (
+          <Link 
+            key={idx} 
+            to={`/projects/${project.slug}`} 
+            className="block"
+            onClick={() => {
+              trackInteraction('project_card_click', { 
+                project_slug: project.slug,
+                category: 'design_systems'
+              });
+              setProjectCategory('Design Systems');
             }}
           >
             <ProjectCard

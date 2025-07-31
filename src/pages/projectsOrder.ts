@@ -21,4 +21,8 @@ export const PROJECTS_ORDER = [
     slug: '3dmark-ios-app',
     title: 'Mobile experience reinvention for 3DMark iOS application with new ecosystem services.',
   },
+  {
+    slug: '3dmark-design-system',
+    title: 'Comprehensive design system with component library and design guidelines.',
+  },
 ];

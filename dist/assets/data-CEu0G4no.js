@@ -2,34 +2,47 @@ const e="Cloud-based CPQ platform for automated pricing and quote generation in 
 
 Nokia launched a pricing tool project to automate pricing and streamline invoicing. The solution brought clarity, speed, and scalability to billing operations, strengthening Nokia's value to clients like Elisa through a more efficient and transparent experience.`,s=`- **Complex Product Configurations & Frequent Data Updates**  
 Nokia's telecom offerings include highly interdependent components (e.g., radio units, basebands, licensing models). Product catalogs, pricing tiers, and discount rules change frequently, requiring the CPQ system to adapt rapidly and maintain accuracy.
+
 - **Limited Visualization and Insights**  
 Existing systems showed raw pricing data without visuals to highlight trends or anomalies, making quick interpretation tough. While the CPQ platform collects rich data, it lacks analysis and recommendations, a clear future enhancement opportunity.
+
 - **Manual and Error-Prone Workflows**  
 Prior to this solution, invoice generation relied on spreadsheets and fragmented processes, leading to delays, billing inaccuracies, and time-consuming dispute resolution.
+
 - **Compliance and Auditability**  
 Invoices needed to meet strict legal, tax, and auditing standards across different countries, requiring features like traceable calculation logic, version control, and PDF exports with precise formatting.
+
 - **Demand for Automation and Integration**  
 Sales teams wanted integration with existing CRM and ERP systems to enable automation of quote generation and order processing. Without proper integration, seamless workflows and extensibility were limited.`,a=`- **Work in Designer Team of** 3  
 Collaborated closely with the Design System team to ensure consistency and scalability across the platform. Regular design reviews and shared component libraries enabled rapid iteration while maintaining visual coherence.
+
 - **Regular Sync and workshop with Software Architect and project manager**  
 Maintained regular syncs and workshops with the Software Architect, Engineers, and Project Manager to ensure technical feasibility and business alignment. This collaborative approach fostered shared understanding and accelerated decision-making processes.
+
 - **User research and feedback integration**  
 Conducted extensive user research with Nokia's sales teams and Sale Managers to understand their pricing workflows and pain points. Regular user testing sessions and feedback loops ensured the solution addressed real user needs and improved adoption rates.`,r=`- **Pricing Insights**  
 Prioritized future capabilities to analyze pricing data and provide proactive pricing suggestions.
+
 - **Product Configuration Management**  
 Enabled organizing products into groups for easier, scalable pricing and policy enforcement.
+
 - **Sales Performance Tracking and Visualization**  
 Implemented detailed tracking and visual reporting of sales trends to support informed business decision-making.
+
 - **Configuration Assistant**  
 Designed a system that suggests compatible products and validates configurations based on business rules.
+
 - **Pricing Recommendations**  
 Implemented a system that analyzes past deals and customer profiles to suggest pricing strategies.`,o=`The CPQ Pricing Tool changed how Nokia's charging department works. Within the first 4 months, quote generation time dropped significantly, and pricing managers reported fewer pricing errors. The automated validation helped teams spot incompatible product combinations faster than manual checking.
 
 **Business Impact:**
 
 - **Reduced Quote Generation Time:** Pricing teams could generate complex quotes more efficiently, compared to **2-3 hours** with manual processes (measured by tracking quote creation time before and after implementation)
+
 - **Improved Pricing Accuracy:** Significant reduction in pricing errors and billing disputes, with automated validation catching configuration issues before submission (based on error tracking and customer feedback)
+
 - **Enhanced Deal Velocity:** Increase in deal closure rates, with faster quote turnaround times and improved customer satisfaction (measured by comparing deal cycle times)
+
 - **Streamlined Integration:** Several enterprise customers successfully integrated the CPQ platform with their existing CRM systems, reducing manual data entry significantly (measured by tracking data entry time)
 
 **Testing & Validation Results:**

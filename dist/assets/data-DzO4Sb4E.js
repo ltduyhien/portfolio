@@ -2,19 +2,26 @@ const e="Admin dashboard for configuring SMB server with advanced file sharing c
 
 This project focused on transforming technical server configuration into an accessible visual experience, reducing setup time and minimizing configuration errors for enterprise IT teams.`,a=`- **Complex Share and Volume Management**  
 Configuring and managing share volumes, folders, and permissions required command-line expertise and deep technical knowledge, creating barriers for IT administrators who needed to quickly deploy and manage file sharing solutions.
+
 - **Fragmented Configuration and Security Management**  
 Server settings were scattered across multiple configuration files and interfaces, making it difficult to maintain consistency, implement security policies, and troubleshoot issues effectively.
+
 - **Limited Performance Monitoring and Visual Feedback**  
 Administrators had no visual representation of server status, active connections, performance metrics, or configuration changes, leading to uncertainty about system health and performance.
+
 - **Error-Prone Manual Configuration and Log Management**  
 Manual editing of configuration files led to syntax errors and misconfigurations that could cause service disruptions, while log analysis required specialized knowledge to identify and resolve issues.`,s="Collaboration began with in-depth sessions with the SMB engineer team to understand the technical implementation and feature set of the Tuxera SMB server. We conducted interviews with IT administrators responsible for configuring SMB servers to learn about their workflows, pain points, and real-world use cases. Insights from these interviews shaped our design approach. Throughout the project, we worked closely with the dashboard application engineering team to review the feasibility of proposed solutions, ensuring that our designs could be effectively implemented and integrated with backend systems.",r=`- **Validation System**  
 Created an intelligent validation engine that checks configuration changes, preventing invalid settings before they're applied to the server.
+
 - **Unified Dashboard View**  
 Consolidated all server management functions into a single, cohesive interface that provides visibility into server status, active connections, and performance metrics.
+
 - **Template-Based Configuration**  
 Developed pre-built configuration templates for common use cases, enabling rapid deployment of standardized file sharing setups.
+
 - **Performance and Health Monitoring**  
 Implemented comprehensive monitoring for server performance, volume health, and folder statistics to provide administrators with insights into system status and usage patterns.
+
 - **Compact Configuration with Advanced Toggle**  
 Designed configuration interface to be compact and straightforward by default, with the ability to toggle advanced configuration options on demand for experienced users.`,o=`The SMB Admin Panel transformed how IT administrators manage file sharing servers. Within the first **4 months** of deployment, IT administrators reported significant reduction in server setup time, with configuration errors decreasing compared to manual configuration methods. The unified dashboard enabled teams to manage file sharing solutions more efficiently than traditional text-based configuration methods.
 
@@ -29,7 +36,9 @@ Designed configuration interface to be compact and straightforward by default, w
 **Real Implementation Testing:** Testing with several enterprise customers validated the dashboard's usability and effectiveness:
 
 - **Toast Post Production:** Media workflow with high-speed SMB sharing for video editing and rendering
+
 - **ClearSky Data:** Cloud storage + SMB integration with reliable HA storage & NAS connectivity
+
 - **Storage providers (Quantum, IBM, pixitmedia):** Media broadcast / VFX workflows with high-speed, multi-threaded SMB sharing
 
 Integration testing showed seamless compatibility with existing enterprise infrastructure and monitoring systems.`,d=[{image:"prototype-dashboard.png",caption:"The main dashboard provides a unified view of server status, active connections, and performance metrics in one place"},{image:"prototype-server-configure.png",caption:"IT administrators can configure server settings with validation that prevents errors before they're applied"},{image:"prototype-client-list.png",caption:"Client management shows all connected users and their access permissions in an easy-to-understand format"},{image:"prototype-add-client.png",caption:"Adding new clients is simplified with guided workflows that walk administrators through permission configuration"},{image:"prototype-folders.png",caption:"Folder and share management lets administrators organize file access and set permissions visually"}],c=[{label:"Full Research Report",url:"#"},{label:"User Flows",url:"#"},{label:"Interactive Prototype",url:"#"}],l="Project Length: **6 Months**",g="**Senior Product Designer**",m=["Storage","Network","SMB","File System"],u="SMB Admin Panel",p=`- Stakeholder interviews with IT administrators and system engineers

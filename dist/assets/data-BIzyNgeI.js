@@ -29,7 +29,7 @@ Users needed to know what was working. We implemented device status updates incl
 
 **Technical Metrics:**
 
-- Device pairing time reduced from **15-20 minutes** to much faster setup
+- Device pairing time reduced from complicated and long set-tup time to just ~2 minutes setup
 - Connection success rate improved from **65%** to a much higher rate
 - User engagement increased significantly for connected device features
 - Cross-platform compatibility achieved high device support rate
