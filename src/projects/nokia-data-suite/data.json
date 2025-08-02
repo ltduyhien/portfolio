@@ -20,7 +20,7 @@
   "appendices": [],
   "timeSpent": "Project Length: **8 Months**",
   "role": "**Product Design Specialist**",
-  "industries": ["Enterprise", "B2B", "Analytics", "AI", "Telecommunications"],
+  "industries": ["Network Analytics", "AI/ML", "5G", "SaaS"],
   "productName": "Nokia Data Suite",
   "summary": "Nokia Data Suite is an enterprise-grade analytics platform designed for network operators and service providers. The platform provides comprehensive data analytics capabilities, enabling organizations to gain insights from their network data, optimize performance, and make data-driven decisions. The project focused on creating an intuitive interface for complex data operations while maintaining the technical depth required for enterprise users.",
   "problem": "**Complex Data Analytics Interface**\n\nNetwork operators and service providers needed a comprehensive analytics platform that could handle large-scale data processing while remaining accessible to users with varying technical expertise. The existing solutions were either too technical for business users or too simplified for technical analysts.\n\n**Key Challenges:**\n- **Data Complexity:** Managing and visualizing large volumes of network data\n- **User Diversity:** Serving both technical analysts and business stakeholders\n- **Real-time Processing:** Providing insights from live network data\n- **Integration Requirements:** Connecting with existing enterprise systems\n- **Compliance Needs:** Meeting industry-specific regulatory requirements",
