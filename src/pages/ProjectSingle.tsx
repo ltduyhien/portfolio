@@ -79,6 +79,7 @@ export interface ProjectData {
   Implementation?: string;
   researchIdeation?: string;
   Buttons?: string;
+  partnerWithRivaAudio?: string;
 }
 
 // Section keys for tracking open state
@@ -90,6 +91,7 @@ const SECTION_KEYS = [
   'aiSuggestionDesign',
   'decisions',
   'prototypes',
+  'partnerWithRivaAudio',
   'outcomes',
 ];
 
@@ -603,6 +605,35 @@ const ProjectSingle = () => {
         ),
         hasImages: true,
       },
+    slug === 'allconnect-app' && project.partnerWithRivaAudio && {
+      key: 'partnerWithRivaAudio',
+      title: 'Partner with Riva Audio',
+      content: (
+        <>
+          <ReactMarkdown
+            remarkPlugins={[remarkConsoleBlock]}
+            rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeConsoleBlock]}
+            components={markdownComponents}
+          >
+            {project.partnerWithRivaAudio.replace(/!\[.*?\]\(prototype-riva\.png\)\n\*.*?\*/g, '')}
+          </ReactMarkdown>
+          <figure className="mt-8">
+            <DynamicImage
+              src="prototype-riva.png"
+              alt="Custom AllConnect interface designed specifically for Riva Audio speakers with branded controls and advanced audio management features"
+              className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
+              onOpenLightbox={handleLightboxOpen}
+              onCloseLightbox={handleLightboxClose}
+              caption="Custom AllConnect interface designed specifically for Riva Audio speakers with branded controls and advanced audio management features"
+            />
+            <figcaption className="text-sm text-zinc-500 dark:text-zinc-400 text-center">
+              Custom AllConnect interface designed specifically for Riva Audio speakers with branded controls and advanced audio management features
+            </figcaption>
+          </figure>
+        </>
+      ),
+      hasImages: true,
+    },
     slug !== '3dmark-design-system' && project.outcomes && {
       key: 'outcomes',
       title: 'Business Impact & Testing',
@@ -872,7 +903,7 @@ const ProjectSingle = () => {
             />
           )}
           {project.industries && project.industries.length > 0 && (
-            <div className="flex flex-wrap md:flex-nowrap gap-2 md:gap-y-0 gap-y-2 mt-4">
+            <div className="flex flex-wrap gap-2 mt-4">
               {project.industries.map((industry, idx) => (
                 <Chip key={idx} text={industry} />
               ))}
@@ -880,11 +911,11 @@ const ProjectSingle = () => {
           )}
         </div>
         {project.banner && (
-          <div className="md:w-80 w-full flex-shrink-0 md:flex" ref={imgContainerRef}>
+          <div className="md:w-80 w-full flex-shrink-0 md:h-full" ref={imgContainerRef}>
             <DynamicImage
               src={project.banner}
               alt="Project banner"
-              className="w-full h-auto md:h-full object-contain md:object-cover [border-radius:6px_/_6px] md:border-2 md:border-zinc-200 md:dark:border-zinc-700"
+              className="w-full h-full object-contain md:object-cover [border-radius:6px_/_6px] md:border-2 md:border-zinc-200 md:dark:border-zinc-700"
               style={{ minHeight: 'auto' }}
               isProjectThumbnail={true}
               onOpenLightbox={handleLightboxOpen}
