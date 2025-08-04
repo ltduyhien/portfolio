@@ -617,19 +617,34 @@ const ProjectSingle = () => {
           >
             {project.partnerWithRivaAudio.replace(/!\[.*?\]\(prototype-riva\.png\)\n\*.*?\*/g, '')}
           </ReactMarkdown>
-          <figure className="mt-8">
-            <DynamicImage
-              src="prototype-riva.png"
-              alt="Custom AllConnect interface designed specifically for Riva Audio speakers with branded controls and advanced audio management features"
-              className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
-              onOpenLightbox={handleLightboxOpen}
-              onCloseLightbox={handleLightboxClose}
-              caption="Custom AllConnect interface designed specifically for Riva Audio speakers with branded controls and advanced audio management features"
-            />
-            <figcaption className="text-sm text-zinc-500 dark:text-zinc-400 text-center">
-              Custom AllConnect interface designed specifically for Riva Audio speakers with branded controls and advanced audio management features
-            </figcaption>
-          </figure>
+          <div className="flex flex-col gap-8 mt-8">
+            <figure>
+              <DynamicImage
+                src="prototype-riva.png"
+                alt="Light theme: Custom AllConnect interface designed specifically for managing Riva Audio speakers with advanced audio settings and voice features"
+                className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
+                onOpenLightbox={handleLightboxOpen}
+                onCloseLightbox={handleLightboxClose}
+                caption="Light theme: Custom AllConnect interface designed specifically for managing Riva Audio speakers with advanced audio settings and voice features"
+              />
+              <figcaption className="text-sm text-zinc-500 dark:text-zinc-400 text-center">
+                Light theme: Custom AllConnect interface designed specifically for managing Riva Audio speakers with advanced audio settings and voice features
+              </figcaption>
+            </figure>
+            <figure>
+              <DynamicImage
+                src="prototype-riva-dark.png"
+                alt="Riva Audio UI with dark mode and enhanced visual contrast for optimal user experience"
+                className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
+                onOpenLightbox={handleLightboxOpen}
+                onCloseLightbox={handleLightboxClose}
+                caption="Riva Audio UI with dark mode and enhanced visual contrast for optimal user experience"
+              />
+              <figcaption className="text-sm text-zinc-500 dark:text-zinc-400 text-center">
+                Riva Audio UI with dark mode and enhanced visual contrast for optimal user experience
+              </figcaption>
+            </figure>
+          </div>
         </>
       ),
       hasImages: true,
