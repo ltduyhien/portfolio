@@ -28,7 +28,7 @@ const ProjectCard = ({ title, subtitle, tags, imageUrl }: ProjectCardProps) => {
           {title}
         </h3>
         <p className="text-base md:text-sm font-medium text-zinc-700 dark:text-zinc-400 mb-2">{subtitle}</p>
-        <div className="flex flex-wrap gap-2 mt-auto" style={{ maxHeight: '3.5rem', overflow: 'hidden' }}>
+        <div className="flex flex-wrap gap-2 mt-auto">
           {tags.map((tag) => (
             <Chip key={tag} text={tag} />
           ))}

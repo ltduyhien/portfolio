@@ -33,7 +33,6 @@ const Home = () => {
     'Telecommunications',
     'Smart Devices',
     'Mobile Apps',
-    'E-commerce',
     'Media Streaming',
     'File Systems',
     'Design Systems',
