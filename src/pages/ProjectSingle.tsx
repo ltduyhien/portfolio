@@ -80,6 +80,7 @@ export interface ProjectData {
   researchIdeation?: string;
   Buttons?: string;
   partnerWithRivaAudio?: string;
+  aiDesignMethodology?: string;
 }
 
 // Section keys for tracking open state
@@ -90,6 +91,7 @@ const SECTION_KEYS = [
   'api',
   'aiSuggestionDesign',
   'decisions',
+  'aiDesignMethodology',
   'prototypes',
   'partnerWithRivaAudio',
   'outcomes',
@@ -555,6 +557,19 @@ const ProjectSingle = () => {
           {Array.isArray(project.keyDecisions)
             ? project.keyDecisions.join('\n')
             : project.keyDecisions}
+        </ReactMarkdown>
+      ),
+    },
+    (slug === 'test-driver-cloud' || slug === 'cpq-pricing-tool') && project.aiDesignMethodology && {
+      key: 'aiDesignMethodology',
+      title: 'AI Design Methodology',
+      content: (
+        <ReactMarkdown
+          remarkPlugins={[remarkConsoleBlock]}
+          rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeConsoleBlock]}
+          components={markdownComponents}
+        >
+          {project.aiDesignMethodology}
         </ReactMarkdown>
       ),
     },
