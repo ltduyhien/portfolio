@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
 import Chip from '../components/Chip';
@@ -6,6 +6,7 @@ import ProjectCard from '../components/ProjectCard';
 import ExperienceCard from '../components/ExperienceCard';
 import Footer from '../components/Footer';
 import { usePageEngagement } from '../hooks/usePageEngagement';
+import { trackCollapseAll, trackSectionToggle } from '../utils/analytics';
 
 import type { ProjectData } from './ProjectSingle';
 import { PROJECTS_ORDER } from './projectsOrder';
@@ -24,6 +25,11 @@ const Home = () => {
     trackScroll: true
   });
   
+  // Track open/closed state for each section
+  const [openSections, setOpenSections] = useState<{ [key: string]: boolean }>({});
+  const [buttonLeft, setButtonLeft] = useState<string | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  
   const tags = [
     'SaaS',
     'Open-source',
@@ -40,6 +46,30 @@ const Home = () => {
   ];
 
   const [projects, setProjects] = useState<ProjectData[]>([]);
+
+  const handleSectionToggle = useCallback((key: string, open: boolean) => {
+    setOpenSections((prev) => ({ ...prev, [key]: open }));
+    trackSectionToggle(key, open, 'home');
+  }, []);
+
+  const handleCollapseAll = useCallback(() => {
+    setOpenSections({});
+    trackCollapseAll('home');
+  }, []);
+
+  const updateButtonPosition = useCallback(() => {
+    if (containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect();
+      const left = rect.left + rect.width / 2;
+      setButtonLeft(`${left}px`);
+    }
+  }, []);
+
+  useEffect(() => {
+    updateButtonPosition();
+    window.addEventListener('resize', updateButtonPosition);
+    return () => window.removeEventListener('resize', updateButtonPosition);
+  }, [updateButtonPosition]);
 
   useEffect(() => {
     async function loadProjects() {
@@ -68,7 +98,7 @@ const Home = () => {
   }
 
   return (
-    <div className="container-custom px-8 pt-24 pb-16 md:pt-8 md:pb-16">
+    <div className="container-custom px-8 pt-24 pb-16 md:pt-8 md:pb-16" ref={containerRef}>
       <h2 className="text-xl font-bold mb-4 text-zinc-900 dark:text-white leading-relaxed">
         <span className="font-bold">Senior Product Designer</span>
         <br />
@@ -116,6 +146,8 @@ const Home = () => {
       <ExperienceCard
         title="Product Design Specialist - UL Solutions (Former Futuremark)"
         date="2023 - Present"
+        isOpen={!!openSections['ul-solutions']}
+        onToggle={(open) => handleSectionToggle('ul-solutions', open)}
       >
         <p>
           Led product design for flagship benchmarking applications across desktop, mobile, and web
@@ -137,7 +169,12 @@ const Home = () => {
           </li>
         </ul>
       </ExperienceCard>
-      <ExperienceCard title="Senior UX Designer - Nokia Oyj" date="2022 - 2023">
+      <ExperienceCard 
+        title="Senior UX Designer - Nokia Oyj" 
+        date="2022 - 2023"
+        isOpen={!!openSections['nokia']}
+        onToggle={(open) => handleSectionToggle('nokia', open)}
+      >
         <p>Led UX design for enterprise cloud and network services solutions:</p>
         <ul className="list-disc pl-8 space-y-1 mt-4">
           <li>
@@ -150,7 +187,12 @@ const Home = () => {
           <li>Collaborated with designers, architects, and end-users across enterprise teams</li>
         </ul>
       </ExperienceCard>
-      <ExperienceCard title="Lead UX Designer - Tuxera Oy" date="2012 - 2021">
+      <ExperienceCard 
+        title="Lead UX Designer - Tuxera Oy" 
+        date="2012 - 2021"
+        isOpen={!!openSections['tuxera']}
+        onToggle={(open) => handleSectionToggle('tuxera', open)}
+      >
         <p>Led product design and development across multiple platforms and technologies:</p>
         <ul className="list-disc pl-8 space-y-1 mt-4">
           <li>
@@ -183,7 +225,12 @@ const Home = () => {
           </li>
         </ul>
       </ExperienceCard>
-      <ExperienceCard title="UX Software Engineer - RunToShop" date="2011 - 2012">
+      <ExperienceCard 
+        title="UX Software Engineer - RunToShop" 
+        date="2011 - 2012"
+        isOpen={!!openSections['runtoshop']}
+        onToggle={(open) => handleSectionToggle('runtoshop', open)}
+      >
         <p>User research and frontend development for web applications:</p>
         <ul className="list-disc pl-8 space-y-1 mt-4">
           <li>Conducted user research and designed websites and web applications</li>
@@ -199,6 +246,19 @@ const Home = () => {
         </Link>
       </div>
       <Footer />
+      {Object.values(openSections).some(Boolean) && buttonLeft && (
+        <button
+          onClick={handleCollapseAll}
+          className="fixed bottom-8 z-50 bg-zinc-900 text-zinc-100 px-6 py-3 rounded-full shadow-lg font-semibold text-sm hover:bg-zinc-800 transition"
+          style={{
+            left: buttonLeft,
+            transform: 'translateX(-50%)',
+            pointerEvents: 'auto',
+          }}
+        >
+          Collapse All
+        </button>
+      )}
     </div>
   );
 };

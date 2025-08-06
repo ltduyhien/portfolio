@@ -59,7 +59,7 @@ const Projects = () => {
   );
 
   const mobileProjects = projects.filter(
-    (project) => project.slug === 'allconnect-app' || project.slug === '3dmark-ios-app',
+    (project) => project.slug === 'allconnect-app' || project.slug === '3dmark-ios-app' || project.slug === 'riva-audio',
   );
 
   const designSystemProjects = projects.filter(

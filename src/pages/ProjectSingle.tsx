@@ -52,6 +52,7 @@ export interface ProjectData {
   summary: string;
   problem: string;
   constraints: string;
+  collaboration?: string;
   keyDecisions: string[];
   outcomes: string;
   screenshots: Screenshot[];
@@ -451,7 +452,7 @@ const ProjectSingle = () => {
         </ReactMarkdown>
       ),
     },
-    slug !== '3dmark-design-system' && project.constraints && {
+    slug !== '3dmark-design-system' && project.collaboration && {
       key: 'collaboration',
       title: 'Collaboration',
       content: (
@@ -460,7 +461,7 @@ const ProjectSingle = () => {
           rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeConsoleBlock]}
           components={markdownComponents}
         >
-          {project.constraints}
+          {project.collaboration}
         </ReactMarkdown>
       ),
     },
@@ -715,6 +716,41 @@ const ProjectSingle = () => {
           {project.Accessibility}
         </ReactMarkdown>
       ),
+    },
+    slug === '3dmark-design-system' && project.researchIdeation && {
+      key: 'researchIdeation',
+      title: 'Research & Ideation',
+      content: (
+        <>
+          <ReactMarkdown
+            remarkPlugins={[remarkConsoleBlock]}
+            rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeConsoleBlock]}
+            components={markdownComponents}
+          >
+            {project.researchIdeation}
+          </ReactMarkdown>
+          {project.ideationImages && project.ideationImages.length > 0 && (
+            <div className="flex flex-col gap-8">
+              {project.ideationImages.map((img, idx) => (
+                <figure key={idx}>
+                  <DynamicImage
+                    src={img.image}
+                    alt={img.caption}
+                    className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
+                    onOpenLightbox={handleLightboxOpen}
+                    onCloseLightbox={handleLightboxClose}
+                    caption={img.caption}
+                  />
+                  <figcaption className="text-sm text-zinc-500 dark:text-zinc-400 text-center">
+                    {img.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          )}
+        </>
+      ),
+      hasImages: true,
     },
     slug === '3dmark-design-system' && project["Color Palette"] && {
       key: 'colorPalette',

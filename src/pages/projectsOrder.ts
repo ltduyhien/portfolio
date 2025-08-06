@@ -18,6 +18,10 @@ export const PROJECTS_ORDER = [
       'Mobile app for managing connected devices and streaming content to wireless speakers and smart TVs.',
   },
   {
+    slug: 'riva-audio',
+    title: 'Mobile app for Riva Audio speaker management and configuration.',
+  },
+  {
     slug: '3dmark-ios-app',
     title: 'Mobile experience reinvention for 3DMark iOS application with new ecosystem services.',
   },
