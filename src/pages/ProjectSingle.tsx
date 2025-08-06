@@ -1011,6 +1011,8 @@ const ProjectSingle = () => {
               ? 'Overview of TDC platform and workflow'
               : slug === 'riva-audio'
               ? 'Communication flow diagram showing how the Riva Audio mobile app communicates with speakers through various protocols including MQTT, WebSockets, and cloud APIs'
+              : slug === 'procyon-desktop-client'
+              ? 'Desktop application interface showing benchmark selection, real-time monitoring, and result analysis for cross-platform performance testing'
               : 'UI examples and component showcase'
           }
         />
@@ -1019,6 +1021,8 @@ const ProjectSingle = () => {
             ? 'Overview of TDC platform and workflow'
             : slug === 'riva-audio'
             ? 'Communication flow diagram showing how the Riva Audio mobile app communicates with speakers through various protocols including MQTT, WebSockets, and cloud APIs'
+            : slug === 'procyon-desktop-client'
+            ? 'Desktop application interface showing benchmark selection, real-time monitoring, and result analysis for cross-platform performance testing'
             : 'UI examples and component showcase'}
         </figcaption>
       </figure>

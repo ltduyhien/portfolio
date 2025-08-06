@@ -62,6 +62,10 @@ const Projects = () => {
     (project) => project.slug === 'allconnect-app' || project.slug === '3dmark-ios-app' || project.slug === 'riva-audio',
   );
 
+  const desktopProjects = projects.filter(
+    (project) => project.slug === 'procyon-desktop-client',
+  );
+
   const designSystemProjects = projects.filter(
     (project) => project.slug === '3dmark-design-system',
   );
@@ -121,6 +125,31 @@ const Projects = () => {
                 category: 'mobile_applications'
               });
               setProjectCategory('Mobile Applications');
+            }}
+          >
+            <ProjectCard
+              title={project.title}
+              subtitle={project.subtext || ''}
+              tags={project.industries || []}
+              imageUrl={getBannerUrl(project.slug || '', project.banner)}
+            />
+          </Link>
+        ))}
+      </div>
+
+      <h3 className="text-lg font-medium mb-4 text-zinc-900 dark:text-white">Desktop Applications</h3>
+      <div className="flex flex-col gap-6 mb-12">
+        {desktopProjects.map((project, idx) => (
+          <Link 
+            key={idx} 
+            to={`/projects/${project.slug}`} 
+            className="block"
+            onClick={() => {
+              trackInteraction('project_card_click', { 
+                project_slug: project.slug,
+                category: 'desktop_applications'
+              });
+              setProjectCategory('Desktop Applications');
             }}
           >
             <ProjectCard

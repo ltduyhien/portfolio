@@ -29,4 +29,8 @@ export const PROJECTS_ORDER = [
     slug: '3dmark-design-system',
     title: 'Comprehensive design system with component library and design guidelines.',
   },
+  {
+    slug: 'procyon-desktop-client',
+    title: 'Desktop application for Procyon Benchmark Suite client on macOS and Windows.',
+  },
 ];
