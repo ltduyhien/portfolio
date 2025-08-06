@@ -134,7 +134,7 @@ const Lightbox: React.FC<LightboxProps> = ({ isOpen, imageSrc, imageAlt, onClose
               <img
                 src={imageSrc}
                 alt={imageAlt}
-                className="max-w-full object-contain shadow-2xl select-none pointer-events-none rounded-b-lg"
+                className="w-full h-full object-contain shadow-2xl select-none pointer-events-none rounded-b-lg"
                 style={
                   {
                     WebkitUserSelect: 'none',
