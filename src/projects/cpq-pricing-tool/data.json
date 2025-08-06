@@ -23,7 +23,8 @@
   "productName": "CPQ Pricing Tool",
   "ideation": "- Stakeholder and user interviews\n- User journey and service blueprint mapping\n- Defining user stories and scenarios\n- Wireframing and prototyping\n- Usability testing and iteration\n\n*Note: The following images represent a portion of the research documentation for demonstration purposes.*",
   "ideationImages": [
-    { "image": "user-stories-service-blueprint.png", "caption": "User stories and service blueprint mapping helped identify opportunities to optimize the CPQ workflow" }
+    { "image": "user-stories-service-blueprint.png", "caption": "User stories and service blueprint mapping helped identify opportunities to optimize the CPQ workflow" },
+    { "image": "explaination.png", "caption": "Project overview and key solution components for the CPQ Pricing Tool development" }
   ],
   "aiFeatures": "Smart automation powers the CPQ platform, turning complex pricing challenges into revenue-generating opportunities. Our AI capabilities boost sales performance through intelligent product suggestions, dynamic pricing strategies, and proactive error detection.\n\n**Configuration Assistant:**\n- Suggests compatible products and services based on user selections\n- Validates configurations against business rules and requirements\n- Reduces configuration errors by providing guidance during quote building\n\n**Pricing Recommendations:**\n- Analyzes past deal outcomes and customer profiles\n- Suggests pricing strategies based on similar successful deals\n- Helps sales teams optimize pricing for better win rates\n\n**Error Prevention:**\n- Identifies potential configuration issues before submission\n- Uses business rules to validate quote completeness\n- Reduces quote rejection rates and speeds up approval processes\n\nThese features were designed with input from sales teams and pricing managers, ensuring they address real business needs."
 } 

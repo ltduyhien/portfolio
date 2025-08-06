@@ -1009,12 +1009,16 @@ const ProjectSingle = () => {
           caption={
             slug === 'test-driver-cloud'
               ? 'Overview of TDC platform and workflow'
+              : slug === 'riva-audio'
+              ? 'Communication flow diagram showing how the Riva Audio mobile app communicates with speakers through various protocols including MQTT, WebSockets, and cloud APIs'
               : 'UI examples and component showcase'
           }
         />
         <figcaption className="text-center text-sm text-zinc-500 dark:text-zinc-400 mt-2">
           {slug === 'test-driver-cloud'
             ? 'Overview of TDC platform and workflow'
+            : slug === 'riva-audio'
+            ? 'Communication flow diagram showing how the Riva Audio mobile app communicates with speakers through various protocols including MQTT, WebSockets, and cloud APIs'
             : 'UI examples and component showcase'}
         </figcaption>
       </figure>
