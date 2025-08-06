@@ -1012,7 +1012,7 @@ const ProjectSingle = () => {
               : slug === 'riva-audio'
               ? 'Communication flow diagram showing how the Riva Audio mobile app communicates with speakers through various protocols including MQTT, WebSockets, and cloud APIs'
               : slug === 'procyon-desktop-client'
-              ? 'Desktop application interface showing benchmark selection, real-time monitoring, and result analysis for cross-platform performance testing'
+              ? 'Architecture diagram showing the Procyon Desktop Client system components and data flow for cross-platform benchmarking'
               : 'UI examples and component showcase'
           }
         />
@@ -1022,7 +1022,7 @@ const ProjectSingle = () => {
             : slug === 'riva-audio'
             ? 'Communication flow diagram showing how the Riva Audio mobile app communicates with speakers through various protocols including MQTT, WebSockets, and cloud APIs'
             : slug === 'procyon-desktop-client'
-            ? 'Desktop application interface showing benchmark selection, real-time monitoring, and result analysis for cross-platform performance testing'
+            ? 'Architecture diagram showing the Procyon Desktop Client system components and data flow for cross-platform benchmarking'
             : 'UI examples and component showcase'}
         </figcaption>
       </figure>
