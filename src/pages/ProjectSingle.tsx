@@ -279,7 +279,7 @@ const projectImages = import.meta.glob('../projects/*/*.{png,jpg,jpeg}', { eager
 // Helper function to get image URL
 const getImageUrl = (slug: string, imageName: string): string => {
   const key = `../projects/${slug}/${imageName}`;
-  return projectImages[key] ? (projectImages[key] as { default: string }).default : `/src/projects/${slug}/${imageName}`;
+  return projectImages[key] ? (projectImages[key] as { default: string }).default : '';
 };
 
 const ProjectSingle = () => {
