@@ -506,6 +506,25 @@ const ProjectSingle = () => {
           >
             {project.ideation}
           </ReactMarkdown>
+          {project.ideationImages && project.ideationImages.length > 0 && (
+            <div className="flex flex-col gap-8 mt-8">
+              {project.ideationImages.map((img, idx) => (
+                <figure key={idx}>
+                  <DynamicImage
+                    src={img.image}
+                    alt={img.caption}
+                    className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
+                    onOpenLightbox={handleLightboxOpen}
+                    onCloseLightbox={handleLightboxClose}
+                    caption={img.caption}
+                  />
+                  <figcaption className="text-sm text-zinc-500 dark:text-zinc-400 text-center">
+                    {img.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          )}
         </>
       ),
       hasImages: true,
@@ -605,8 +624,8 @@ const ProjectSingle = () => {
         title: 'Prototypes',
         content: (
           <>
-            <p className="mb-6 text-base font-medium text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              These drafts represent specific sections of the UI and are intended to showcase
+            <p className="mb-6 text-base italic text-zinc-700 dark:text-zinc-300 leading-relaxed">
+              Note: These drafts represent specific sections of the UI and are intended to showcase
               particular functionalities, not the complete interface.
             </p>
             {project.screenshots.length > 0 && (
