@@ -110,7 +110,7 @@ const Home = () => {
         ))}
       </div>
       <p className="mb-4 text-base font-medium text-zinc-700 dark:text-zinc-300 leading-relaxed">
-        Hello, I am Hien. I am a senior product designer based in Espoo, Finland. Currently designing features that help you improve and track your computer hardware performance at UL Solutions. My work focuses on user research, iterative design, and measurable impact across SaaS platforms, enterprise tools, desktop applications, mobile applications, and AI-powered features.
+        Hello, I am Hien. I am a Senior/Lead Product Designer based in Espoo, Finland. Currently designing features that help you improve and track your computer hardware performance at UL Solutions. My work focuses on user research, iterative design, and measurable impact across SaaS platforms, enterprise tools, desktop applications, mobile applications, and AI-powered features.
       </p>
 
       <h3 className="text-lg font-medium mb-4 mt-8 text-zinc-900 dark:text-white">My Work</h3>

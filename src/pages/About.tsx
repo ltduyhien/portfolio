@@ -99,7 +99,7 @@ const About = () => {
         </div>
         <div className="flex-1">
           <p className="mb-4 text-base font-medium text-zinc-700 dark:text-zinc-200 leading-relaxed">
-            I am a Senior Product Designer with over 13 years of experience in SaaS and technical
+            I am a Senior/Lead Product Designer with over 13 years of experience in SaaS and technical
             products, based in Espoo, Finland. My journey started with coding and evolved into
             design when I realized I could bridge the gap between technical complexity and user
             needs. My work focuses on turning complex technical systems into intuitive digital
