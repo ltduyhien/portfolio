@@ -10,6 +10,7 @@ import Projects from './pages/Projects';
 import About from './pages/About';
 import ProjectSingle from './pages/ProjectSingle';
 import Github from './pages/Github';
+import NotFound from './pages/NotFound';
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(() => {
@@ -114,6 +115,8 @@ function ContentWithFade() {
             <Route path="/github" element={<Github />} />
             {/* <Route path="/github" element={<Github />} /> */}
             <Route path="/about" element={<About />} />
+            <Route path="/404" element={<NotFound />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </motion.div>
       </AnimatePresence>

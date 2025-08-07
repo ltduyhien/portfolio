@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { useCallback } from 'react';
 import rehypeHighlight from 'rehype-highlight';
@@ -284,6 +284,7 @@ const getImageUrl = (slug: string, imageName: string): string => {
 
 const ProjectSingle = () => {
   const { slug } = useParams();
+  const navigate = useNavigate();
   const [project, setProject] = useState<ProjectData | null>(null);
   const [loading, setLoading] = useState(true);
   const leftRef = useRef<HTMLDivElement>(null);
@@ -346,6 +347,10 @@ const ProjectSingle = () => {
       setStartTime(Date.now());
       setInteractionCount(0);
       setScrollDepth(0);
+    }).catch((error) => {
+      console.error(`Failed to load project data for slug: ${slug}`, error);
+      setLoading(false);
+      setProject(null);
     });
   }, [slug]);
 
@@ -425,10 +430,16 @@ const ProjectSingle = () => {
     }
   }, [openSections, isLightboxOpen, buttonLeft]);
 
-  if (loading || !project) {
+  if (loading) {
     return (
       <div className="container-custom px-8 pt-20 pb-16 md:py-16 max-w-3xl mx-auto">Loading...</div>
     );
+  }
+
+  if (!project) {
+    // Redirect to 404 page when project is not found
+    navigate('/404');
+    return null;
   }
 
   // Find current, previous, and next project
