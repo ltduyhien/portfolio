@@ -65,6 +65,7 @@ export interface ProjectData {
   api?: string; // Added for API section
   apiSection?: string; // Added for API section
   ideationImages?: { image: string; caption: string }[]; // Added for ideationImages
+  outcomesImages?: { image: string; caption: string }[]; // Added for outcomesImages
   aiSuggestionDesign?: string; // Added for AI Suggestion Design section
   aiFeatures?: string; // Added for AI Features section
   interactiveMode?: string; // Added for Interactive Mode section
@@ -484,29 +485,27 @@ const ProjectSingle = () => {
           <ReactMarkdown
             remarkPlugins={[remarkConsoleBlock]}
             rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeConsoleBlock]}
-            components={markdownComponents}
-          >
-            {project.ideation}
-          </ReactMarkdown>
-          {project.ideationImages && project.ideationImages.length > 0 && (
-            <div className="flex flex-col gap-8">
-              {project.ideationImages.map((img, idx) => (
-                <figure key={idx}>
+            components={{
+              ...markdownComponents,
+              img: ({ src, alt }) => (
+                <figure className="my-8">
                   <DynamicImage
-                    src={img.image}
-                    alt={img.caption}
+                    src={src}
+                    alt={alt}
                     className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
                     onOpenLightbox={handleLightboxOpen}
                     onCloseLightbox={handleLightboxClose}
-                    caption={img.caption}
+                    caption={alt}
                   />
                   <figcaption className="text-sm text-zinc-500 dark:text-zinc-400 text-center">
-                    {img.caption}
+                    {alt}
                   </figcaption>
                 </figure>
-              ))}
-            </div>
-          )}
+              )
+            }}
+          >
+            {project.ideation}
+          </ReactMarkdown>
         </>
       ),
       hasImages: true,
@@ -567,7 +566,7 @@ const ProjectSingle = () => {
           components={markdownComponents}
         >
           {Array.isArray(project.keyDecisions)
-            ? project.keyDecisions.join('\n')
+            ? project.keyDecisions.map(item => `- ${item}`).join('\n\n')
             : project.keyDecisions}
         </ReactMarkdown>
       ),
@@ -601,8 +600,7 @@ const ProjectSingle = () => {
         );
       })(),
     },
-    slug !== '3dmark-design-system' && project.screenshots &&
-      project.screenshots.length > 0 && {
+    slug !== '3dmark-design-system' && project.screenshots && {
         key: 'prototypes',
         title: 'Prototypes',
         content: (
@@ -611,23 +609,25 @@ const ProjectSingle = () => {
               These drafts represent specific sections of the UI and are intended to showcase
               particular functionalities, not the complete interface.
             </p>
-            <div className="flex flex-col gap-8">
-              {project.screenshots.map((shot, idx) => (
-                <figure key={idx}>
-                  <DynamicImage
-                    src={shot.image}
-                    alt={shot.caption}
-                    className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
-                    onOpenLightbox={handleLightboxOpen}
-                    onCloseLightbox={handleLightboxClose}
-                    caption={shot.caption}
-                  />
-                  <figcaption className="text-sm text-zinc-500 dark:text-zinc-400 text-center">
-                    {shot.caption}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
+            {project.screenshots.length > 0 && (
+              <div className="flex flex-col gap-8">
+                {project.screenshots.map((shot, idx) => (
+                  <figure key={idx}>
+                    <DynamicImage
+                      src={shot.image}
+                      alt={shot.caption}
+                      className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
+                      onOpenLightbox={handleLightboxOpen}
+                      onCloseLightbox={handleLightboxClose}
+                      caption={shot.caption}
+                    />
+                    <figcaption className="text-sm text-zinc-500 dark:text-zinc-400 text-center">
+                      {shot.caption}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            )}
           </>
         ),
         hasImages: true,
@@ -680,14 +680,36 @@ const ProjectSingle = () => {
       key: 'outcomes',
       title: 'Business Impact & Testing',
       content: (
-        <ReactMarkdown
-          remarkPlugins={[remarkConsoleBlock]}
-          rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeConsoleBlock]}
-          components={markdownComponents}
-        >
-          {project.outcomes}
-        </ReactMarkdown>
+        <>
+          <ReactMarkdown
+            remarkPlugins={[remarkConsoleBlock]}
+            rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeConsoleBlock]}
+            components={markdownComponents}
+          >
+            {project.outcomes}
+          </ReactMarkdown>
+          {project.outcomesImages && project.outcomesImages.length > 0 && (
+            <div className="flex flex-col gap-8 mt-8">
+              {project.outcomesImages.map((img, idx) => (
+                <figure key={idx}>
+                  <DynamicImage
+                    src={img.image}
+                    alt={img.caption}
+                    className="w-full [border-radius:6px_/_6px] object-cover mb-2 border-2 border-zinc-200 dark:border-zinc-700"
+                    onOpenLightbox={handleLightboxOpen}
+                    onCloseLightbox={handleLightboxClose}
+                    caption={img.caption}
+                  />
+                  <figcaption className="text-sm text-zinc-500 dark:text-zinc-400 text-center">
+                    {img.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          )}
+        </>
       ),
+      hasImages: true,
     },
     slug === '3dmark-design-system' && project.researchIdeation && {
       key: 'researchIdeation',

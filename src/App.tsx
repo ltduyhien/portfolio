@@ -98,6 +98,11 @@ function ContentWithFade() {
     }
   }, [location.pathname]);
   
+  // Special handling for 404 page
+  if (location.pathname === '/404' || location.pathname === '*') {
+    return <NotFound />;
+  }
+  
   return (
     <div className="md:ml-72 min-h-screen pt-8 md:pt-12">
       <AnimatePresence mode="wait">
