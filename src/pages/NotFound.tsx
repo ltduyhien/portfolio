@@ -47,7 +47,7 @@ const NotFound: React.FC = () => {
             <span>Back to homepage</span>
           </Link>
           <a
-            href="mailto:contact@example.com"
+            href="mailto:letranduyhien@gmail.com"
             className="flex items-start text-teal-400 hover:text-teal-300 transition-colors duration-200 text-sm"
           >
             <span className="mr-2">•</span>
