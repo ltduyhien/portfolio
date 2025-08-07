@@ -4,8 +4,9 @@ import { motion } from 'framer-motion';
 
 const NotFound: React.FC = () => {
   return (
-    <div className="min-h-screen pt-8 md:pt-12">
-      <div className="flex justify-center items-start px-4">
+    <div className="flex h-screen">
+      <div className="w-72 bg-gray-900"></div>
+      <div className="flex-1 flex justify-center items-start px-4 pt-28">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
