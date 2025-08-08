@@ -1,11 +1,11 @@
 export const PROJECTS_ORDER = [
   {
-    slug: 'test-driver-cloud',
-    title: 'Cloud-based platform for automated PC performance testing and monitoring.',
-  },
-  {
     slug: 'nokia-data-suite',
     title: 'Enterprise data analytics platform for network operators and service providers.',
+  },
+  {
+    slug: 'test-driver-cloud',
+    title: 'Cloud-based platform for automated PC performance testing and monitoring.',
   },
   {
     slug: 'cpq-pricing-tool',
