@@ -9,7 +9,7 @@ import { usePageEngagement } from '../hooks/usePageEngagement';
 import { trackCollapseAll, trackSectionToggle } from '../utils/analytics';
 
 import type { ProjectData } from './ProjectSingle';
-import { PROJECTS_ORDER } from './projectsOrder';
+import { HOMEPAGE_PROJECTS } from './projectsOrder';
 
 // Vite dynamic image import
 const projectImages = import.meta.glob('../projects/*/*', {
@@ -73,10 +73,8 @@ const Home = () => {
 
   useEffect(() => {
     async function loadProjects() {
-      // Filter out Procyon project for public display
-      const publicProjects = PROJECTS_ORDER.filter(proj => proj.slug !== 'procyon-reinvention');
       const loaded = await Promise.all(
-        publicProjects.slice(0, 4).map(async (proj) => {
+        HOMEPAGE_PROJECTS.map(async (proj) => {
           try {
             const mod = await import(`../projects/${proj.slug}/data.json`);
             return { ...mod.default, slug: proj.slug };
