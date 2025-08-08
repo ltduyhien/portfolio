@@ -53,11 +53,17 @@ const Projects = () => {
   const saasProjects = projects.filter(
     (project) =>
       project.slug === 'test-driver-cloud' ||
+      project.slug === 'cpq-pricing-tool' ||
+      project.slug === 'smb-admin-panel' ||
       project.slug === 'nokia-data-suite',
   );
 
   const mobileProjects = projects.filter(
-    (project) => project.slug === 'riva-audio',
+    (project) => project.slug === 'allconnect-app' || project.slug === '3dmark-ios-app' || project.slug === 'riva-audio',
+  );
+
+  const desktopProjects = projects.filter(
+    (project) => project.slug === 'procyon-desktop-client',
   );
 
   const designSystemProjects = projects.filter(
@@ -71,13 +77,12 @@ const Projects = () => {
       </h2>
       <p className="mb-8 text-base font-medium text-zinc-700 dark:text-zinc-200 leading-relaxed max-w-2xl">
         Over the years, I have worked across different industries, from SaaS platforms and
-        enterprise tools to mobile applications and design systems. Each project presented unique
-        challenges: making complex data analytics accessible to network operators, creating
-        cloud-based performance testing platforms, designing mobile experiences for audio device
-        management, or building comprehensive design systems that scale across products. These
-        projects reflect my journey through telecommunications, data analytics, developer tools,
-        smart devices, and design systems, always focusing on how design can make technical
-        systems more approachable and effective.
+        enterprise tools to mobile apps and hardware integration. Each project presented unique
+        challenges: simplifying complex pricing logic for sales teams, making hardware performance
+        data accessible to engineers, or designing mobile experiences that bridge the gap between
+        technical accuracy and user-friendly interfaces. These projects reflect my journey through
+        telecommunications, data analytics, developer tools, and smart devices, always focusing on
+        how design can make technical systems more approachable and effective.
       </p>
 
       <h3 className="text-lg font-medium mb-4 text-zinc-900 dark:text-white">
@@ -120,6 +125,31 @@ const Projects = () => {
                 category: 'mobile_applications'
               });
               setProjectCategory('Mobile Applications');
+            }}
+          >
+            <ProjectCard
+              title={project.title}
+              subtitle={project.subtext || ''}
+              tags={project.industries || []}
+              imageUrl={getBannerUrl(project.slug || '', project.banner)}
+            />
+          </Link>
+        ))}
+      </div>
+
+      <h3 className="text-lg font-medium mb-4 text-zinc-900 dark:text-white">Desktop Applications</h3>
+      <div className="flex flex-col gap-6 mb-12">
+        {desktopProjects.map((project, idx) => (
+          <Link 
+            key={idx} 
+            to={`/projects/${project.slug}`} 
+            className="block"
+            onClick={() => {
+              trackInteraction('project_card_click', { 
+                project_slug: project.slug,
+                category: 'desktop_applications'
+              });
+              setProjectCategory('Desktop Applications');
             }}
           >
             <ProjectCard
